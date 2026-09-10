@@ -71,6 +71,7 @@ export function parseExportFile(value: unknown): Exercise[] {
   const data = record(value, "file");
   if (data.version !== 1) invalid("version", "must be 1");
   string(data.exportedAt, "exportedAt");
+  if ("programNotes" in data) string(data.programNotes, "programNotes");
   const exercises = array(data.exercises, "exercises");
   const ids = new Set<string>();
 
@@ -87,6 +88,11 @@ export function parseExportFile(value: unknown): Exercise[] {
       choice(day, DAY_TYPES, `${path}.dayTypes[${index}]`);
     });
     string(exercise.notes, `${path}.notes`);
+    if ("tags" in exercise) {
+      array(exercise.tags, `${path}.tags`).forEach((tag, index) => {
+        string(tag, `${path}.tags[${index}]`, true);
+      });
+    }
     // A new lift or an exercise tracked by feel legitimately has no best.
     if (exercise.best !== null) snapshot(exercise.best, `${path}.best`);
     array(exercise.recents, `${path}.recents`).forEach((recent, index) => {

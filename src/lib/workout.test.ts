@@ -10,7 +10,9 @@ import { StoreProvider, useStore } from "./store";
 
 vi.mock("./db", async (importOriginal) => ({
   ...await importOriginal<typeof import("./db")>(),
-  loadAll: vi.fn(), saveAll: vi.fn(), saveOne: vi.fn(), deleteOne: vi.fn(), importBackup: vi.fn(),
+  loadAll: vi.fn(),
+  loadProgramNotes: vi.fn().mockResolvedValue(""),
+  saveProgramNotes: vi.fn().mockResolvedValue(undefined), saveAll: vi.fn(), saveOne: vi.fn(), deleteOne: vi.fn(), importBackup: vi.fn(),
 }));
 
 const key = "gym-buddy-workout";

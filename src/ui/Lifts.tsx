@@ -6,6 +6,15 @@ import { MUSCLE_LABEL } from "./labels";
 import { go } from "./route";
 import type { WorkoutList } from "../lib/workout";
 import { WorkoutNotice } from "./WorkoutNotice";
+import { matchesSearch } from "../lib/tags";
+import { Mascot } from "./Mascot";
+
+const SORTED_MUSCLES = [...MUSCLES].sort((a, b) => {
+  if (a === b) return 0;
+  if (a === "other") return 1;
+  if (b === "other") return -1;
+  return MUSCLE_LABEL[a].localeCompare(MUSCLE_LABEL[b]);
+});
 
 export function Lifts({ exercises, workout }: { exercises: Exercise[]; workout: WorkoutList }) {
   const [q, setQ] = useState("");
@@ -16,7 +25,7 @@ export function Lifts({ exercises, workout }: { exercises: Exercise[]; workout: 
     const query = q.trim().toLowerCase();
     return exercises.filter((ex) => {
       if (muscle !== "all" && ex.muscle !== muscle) return false;
-      if (query && !ex.name.toLowerCase().includes(query)) return false;
+      if (!matchesSearch(ex, query)) return false;
       return true;
     });
   }, [exercises, q, muscle]);
@@ -24,9 +33,12 @@ export function Lifts({ exercises, workout }: { exercises: Exercise[]; workout: 
   return (
     <div className="page">
       <header className="top row">
-        <div>
-          <div className="kicker">Library</div>
-          <h1>Lifts</h1>
+        <div className="library-heading">
+          <Mascot size="small" />
+          <div>
+            <div className="kicker">Library</div>
+            <h1>Lifts</h1>
+          </div>
         </div>
         <button type="button" className="btn" onClick={() => go("#/new")}>
           Add
@@ -37,7 +49,8 @@ export function Lifts({ exercises, workout }: { exercises: Exercise[]; workout: 
       <input
         className="search"
         type="search"
-        placeholder="Search lifts"
+        placeholder="Search lifts or tags"
+        aria-label="Search lifts or tags"
         value={q}
         onChange={(e) => setQ(e.target.value)}
         enterKeyHint="search"
@@ -52,7 +65,7 @@ export function Lifts({ exercises, workout }: { exercises: Exercise[]; workout: 
         >
           All
         </button>
-        {MUSCLES.map((m) => (
+        {SORTED_MUSCLES.map((m) => (
           <button
             key={m}
             type="button"

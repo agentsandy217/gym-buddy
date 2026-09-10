@@ -4,13 +4,18 @@ import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import App from "../App";
 import type { Exercise } from "../types";
-import { loadAll, saveAll } from "./db";
+import { loadProgramNotes, saveProgramNotes, loadAll, saveAll, saveOne } from "./db";
+import seed from "../seed.json";
+import { sheetToExercises } from "./fromSheet";
 import { StoreProvider, useStore } from "./store";
 
 vi.mock("./db", async (importOriginal) => ({
   ...await importOriginal<typeof import("./db")>(),
   loadAll: vi.fn(),
+  loadProgramNotes: vi.fn().mockResolvedValue(""),
+  saveProgramNotes: vi.fn().mockResolvedValue(undefined),
   saveAll: vi.fn(),
+  saveOne: vi.fn(),
 }));
 
 const exercise: Exercise = {
@@ -44,7 +49,10 @@ beforeEach(() => {
   localStorage.clear();
   vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
   vi.mocked(loadAll).mockReset();
+  vi.mocked(loadProgramNotes).mockReset().mockResolvedValue("");
+  vi.mocked(saveProgramNotes).mockReset().mockResolvedValue(undefined);
   vi.mocked(saveAll).mockReset().mockResolvedValue(undefined);
+  vi.mocked(saveOne).mockReset().mockResolvedValue(undefined);
   // Even a direct link to Backup must be gated on successful loading.
   window.location.hash = "#/backup";
   container = document.createElement("div");
@@ -59,6 +67,20 @@ afterEach(async () => {
 });
 
 describe("startup recovery", () => {
+  it("persists restored tags without replacing saved sessions or deliberately cleared tags", async () => {
+    const [original, second] = sheetToExercises(seed);
+    const { tags: _tags, ...legacy } = original;
+    const edited = { ...legacy, name: "Renamed lift", notes: "My notes", recents: original.best ? [original.best] : [] };
+    const cleared = { ...second, tags: [] };
+    vi.mocked(loadAll).mockResolvedValue([edited, cleared]);
+    await render();
+    expect(store.ready).toBe(true);
+    expect(saveOne).toHaveBeenCalledExactlyOnceWith({ ...edited, tags: original.tags });
+    expect(store.byId(edited.id)).toEqual({ ...edited, tags: original.tags });
+    expect(store.byId(cleared.id)?.tags).toEqual([]);
+    expect(saveAll).not.toHaveBeenCalled();
+  });
+
   it("identifies a read failure, exposes browser details, and blocks empty exports", async () => {
     vi.mocked(loadAll).mockRejectedValue(new DOMException("Storage access denied", "SecurityError"));
     await render();
@@ -155,7 +177,7 @@ describe("library navigation", () => {
     vi.mocked(loadAll).mockResolvedValue([exercise]);
     await render();
     expect(container.querySelector("h1")?.textContent).toBe("Lifts");
-    expect(container.querySelector('input[type="search"]')?.getAttribute("placeholder")).toBe("Search lifts");
+    expect(container.querySelector('input[type="search"]')?.getAttribute("placeholder")).toBe("Search lifts or tags");
     expect([...container.querySelectorAll("nav button")].map((button) => button.textContent)).toEqual(["Lifts", "Workout", "Backup"]);
     expect(container.querySelector("nav .on")?.textContent).toBe("Lifts");
     expect(container.querySelector(".lift-name")?.textContent).toBe(exercise.name);
@@ -184,5 +206,33 @@ describe("library navigation", () => {
     }
     expect(store.exercises).toHaveLength(2);
     expect(saveAll).not.toHaveBeenCalled();
+  });
+});
+
+
+describe("program notes", () => {
+  it("loads notes, saves edits in order, and includes the latest text in exports", async () => {
+    vi.mocked(loadAll).mockResolvedValue([exercise]);
+    vi.mocked(loadProgramNotes).mockResolvedValue("Push / Pull / Legs");
+    await render();
+    expect(store.programNotes).toBe("Push / Pull / Legs");
+    await act(async () => {
+      store.updateProgramNotes("Upper");
+      store.updateProgramNotes("Upper / Lower\nFour days a week");
+    });
+    expect(vi.mocked(saveProgramNotes).mock.calls.map(([text]) => text)).toEqual(["Upper", "Upper / Lower\nFour days a week"]);
+    expect(store.notesStatus).toBe("Saved");
+    expect(JSON.parse(store.exportJson()).programNotes).toBe("Upper / Lower\nFour days a week");
+  });
+
+  it("keeps unsaved text after a write failure and allows retry", async () => {
+    vi.mocked(loadAll).mockResolvedValue([exercise]);
+    vi.mocked(saveProgramNotes).mockRejectedValueOnce(new Error("Storage full"));
+    await render();
+    await act(async () => store.updateProgramNotes("My new split"));
+    expect(store.programNotes).toBe("My new split");
+    expect(store.notesStatus).toContain("Couldn’t save");
+    await act(async () => store.updateProgramNotes(store.programNotes));
+    expect(store.notesStatus).toBe("Saved");
   });
 });

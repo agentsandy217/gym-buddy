@@ -53,6 +53,7 @@ export type Exercise = {
   equipment: Equipment;
   muscle: Muscle;
   dayTypes: DayType[];
+  tags?: string[];
   notes: string;
   best: Snapshot | null;
   recents: Snapshot[];
@@ -70,5 +71,6 @@ export type SheetRow = {
 export type ExportFile = {
   version: 1;
   exportedAt: string;
+  programNotes?: string;
   exercises: Exercise[];
 };

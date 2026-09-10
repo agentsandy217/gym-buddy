@@ -4,6 +4,7 @@ import { DAY_TYPES, EQUIPMENT, MUSCLES } from "../types";
 import { uniqueId } from "../lib/fromSheet";
 import { DAY_LABEL, EQUIPMENT_LABEL, MUSCLE_LABEL } from "./labels";
 import { go } from "./route";
+import { parseTags } from "../lib/tags";
 
 type Props = {
   existing?: Exercise;
@@ -18,6 +19,7 @@ export function Editor({ existing, ids, onSave, onDelete }: Props) {
   const [muscle, setMuscle] = useState<Muscle>(existing?.muscle ?? "other");
   const [dayTypes, setDayTypes] = useState<DayType[]>(existing?.dayTypes ?? ["other"]);
   const [notes, setNotes] = useState(existing?.notes ?? "");
+  const [tags, setTags] = useState((existing?.tags ?? []).join(", "));
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -42,6 +44,7 @@ export function Editor({ existing, ids, onSave, onDelete }: Props) {
         muscle,
         dayTypes: dayTypes.length ? dayTypes : ["other"],
         notes: notes.trim(),
+        tags: parseTags(tags),
         best: existing?.best ?? null,
         recents: existing?.recents ?? [],
       });
@@ -125,6 +128,16 @@ export function Editor({ existing, ids, onSave, onDelete }: Props) {
           </button>
         ))}
       </div>
+      <label className="label" htmlFor="ex-tags">Tags</label>
+      <input
+        id="ex-tags"
+        className="search"
+        value={tags}
+        onChange={(e) => setTags(e.target.value)}
+        placeholder="Fly, Upper Chest"
+        aria-describedby="ex-tags-help"
+      />
+      <p id="ex-tags-help" className="muted">Separate tags with commas. Edit or remove any tag here.</p>
       <label className="label" htmlFor="ex-notes">
         Notes
       </label>

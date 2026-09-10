@@ -3,6 +3,8 @@ import type { WorkoutList } from "../lib/workout";
 import { LiftCard } from "./Card";
 import { WorkoutNotice } from "./WorkoutNotice";
 import { go } from "./route";
+import { ProgramNotes } from "./ProgramNotes";
+import { Mascot } from "./Mascot";
 
 export function Workout({ exercises, workout }: { exercises: Exercise[]; workout: WorkoutList }) {
   const byId = new Map(exercises.map((exercise) => [exercise.id, exercise]));
@@ -19,11 +21,13 @@ export function Workout({ exercises, workout }: { exercises: Exercise[]; workout
           Clear list
         </button>
       </header>
+      <ProgramNotes />
       <WorkoutNotice workout={workout} />
       {!workout.ready ? (
         !workout.error && <p className="muted" role="status">Loading your workout…</p>
       ) : selected.length === 0 ? (
         <div className="workout-empty">
+          <Mascot size="large" />
           <p className="lede">Add exercises from Lifts to build your workout.</p>
           <button type="button" className="btn primary" onClick={() => go("#/lifts")}>Add exercises</button>
         </div>

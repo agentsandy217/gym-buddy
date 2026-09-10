@@ -10,6 +10,11 @@ export function LiftCard({ exercise, action }: { exercise: Exercise; action?: Re
       <button type="button" className="lift-row" onClick={() => go(`#/e/${exercise.id}`)}>
         <div className="lift-main">
           <div className="lift-name">{exercise.name}</div>
+          {!!exercise.tags?.length && (
+            <div className="tags lift-tags">
+              {exercise.tags.map((tag, index) => <span className="tag" key={`${tag}-${index}`}>{tag}</span>)}
+            </div>
+          )}
           {exercise.best ? (
             <div className="lift-best">{formatSnapshot(exercise.best)}</div>
           ) : (

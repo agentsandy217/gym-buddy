@@ -1,7 +1,7 @@
 import { IDBDatabase, IDBFactory, IDBObjectStore } from "fake-indexeddb";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { Exercise } from "../types";
-import { importBackup, loadAll, saveAll, toExportFile } from "./db";
+import { loadProgramNotes, saveProgramNotes, importBackup, loadAll, saveAll, toExportFile } from "./db";
 import { parseSnapshot } from "./parse";
 
 const existing: Exercise = {
@@ -33,6 +33,32 @@ describe("importBackup", () => {
   });
 
   afterEach(() => vi.unstubAllGlobals());
+
+  it("persists program notes and round-trips them through backups", async () => {
+    const notes = "Push / Pull / Legs\nMonday: Push\nProgress when all sets reach 10 reps.";
+    await saveProgramNotes(notes);
+    expect(await loadProgramNotes()).toBe(notes);
+    const backup = JSON.stringify(toExportFile(await loadAll(), await loadProgramNotes()));
+    await saveProgramNotes("Different program");
+    await importBackup(backup);
+    expect(await loadProgramNotes()).toBe(notes);
+    expect(await loadAll()).toEqual([existing]);
+  });
+
+  it("preserves notes with legacy backups and restores explicitly empty notes", async () => {
+    await saveProgramNotes("Upper / Lower");
+    await importBackup(JSON.stringify(toExportFile([band])));
+    expect(await loadProgramNotes()).toBe("Upper / Lower");
+    await importBackup(JSON.stringify(toExportFile([existing], "")));
+    expect(await loadProgramNotes()).toBe("");
+  });
+
+  it("rejects invalid notes before changing either notes or lifts", async () => {
+    await saveProgramNotes("Keep this program");
+    await expect(importBackup(JSON.stringify({ ...toExportFile([band]), programNotes: 123 }))).rejects.toThrow("programNotes");
+    expect(await loadProgramNotes()).toBe("Keep this program");
+    expect(await loadAll()).toEqual([existing]);
+  });
 
   it.each([
     ["invalid JSON", "{"],

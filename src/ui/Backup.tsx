@@ -56,11 +56,12 @@ export function Backup({ count, exportJson, importJson }: Props) {
         {count} lifts live on this phone. Export when you hit a new best, or before you switch
         phones. Not every day.
       </p>
+      <p className="muted">Import replaces your lifts and restores program notes. Older backups without notes keep your current notes.</p>
       <button type="button" className="btn primary wide" onClick={() => void share()}>
         Export
       </button>
       <button type="button" className="btn wide" onClick={() => fileRef.current?.click()}>
-        Import (replaces everything)
+        Import backup
       </button>
       <input
         ref={fileRef}

@@ -4,16 +4,18 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
 import seedRows from "../seed.json";
 import type { Exercise, SheetRow, Snapshot } from "../types";
-import { deleteOne, importBackup, loadAll, saveAll, saveOne, toExportFile } from "./db";
+import { loadProgramNotes, saveProgramNotes, deleteOne, importBackup, loadAll, saveAll, saveOne, toExportFile } from "./db";
 import { sheetToExercises } from "./fromSheet";
 import { formatSnapshot, parseSnapshot, todayISO } from "./parse";
 import { isBetter } from "./rank";
 import { useWorkout, type WorkoutList } from "./workout";
+import { restoreTags } from "./restoreTags";
 
 export type LoadError = {
   stage: "read" | "seed" | "prepare";
@@ -30,6 +32,9 @@ function errorDetails(error: unknown): string {
 }
 
 type Store = {
+  programNotes: string;
+  notesStatus: string;
+  updateProgramNotes: (text: string) => void;
   ready: boolean;
   loadError: LoadError | null;
   retryLoad: () => void;
@@ -60,6 +65,20 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [loadAttempt, setLoadAttempt] = useState(0);
   const [exercises, setExercises] = useState<Exercise[]>([]);
   const workout = useWorkout(exercises, ready);
+  const [programNotes, setProgramNotes] = useState("");
+  const [notesStatus, setNotesStatus] = useState("");
+  const notesWrites = useRef(Promise.resolve());
+  const notesRevision = useRef(0);
+  const updateProgramNotes = useCallback((text: string) => {
+    setProgramNotes(text);
+    setNotesStatus("Saving…");
+    const revision = ++notesRevision.current;
+    notesWrites.current = notesWrites.current.then(() => saveProgramNotes(text)).then(() => {
+      if (revision === notesRevision.current) setNotesStatus("Saved");
+    }).catch(() => {
+      if (revision === notesRevision.current) setNotesStatus("Couldn’t save. Your text is still here; try saving again.");
+    });
+  }, []);
 
   const retryLoad = useCallback(() => {
     setLoadError(null);
@@ -82,6 +101,14 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         }
         if (cancelled) return;
         stage = "prepare";
+        loaded = loaded.map(restoreTags);
+        for (let i = 0; i < existing.length; i++) {
+          if (loaded[i] !== existing[i]) await saveOne(loaded[i]);
+        }
+        if (cancelled) return;
+        const notes = await loadProgramNotes();
+        if (cancelled) return;
+        setProgramNotes(notes);
         setExercises(sortExercises(loaded));
         setReady(true);
       } catch (error) {
@@ -146,11 +173,14 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const exportJson = useCallback(() => {
     if (!ready) throw new Error("Saved lifts must load successfully before exporting a backup.");
-    return JSON.stringify(toExportFile(exercises), null, 2);
-  }, [ready, exercises]);
+    return JSON.stringify(toExportFile(exercises, programNotes), null, 2);
+  }, [ready, exercises, programNotes]);
 
   const importJson = useCallback(async (text: string) => {
+    await notesWrites.current;
     const list = await importBackup(text);
+    setProgramNotes(await loadProgramNotes());
+    setNotesStatus("");
     setExercises(sortExercises(list));
   }, []);
 
@@ -161,6 +191,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       retryLoad,
       exercises,
       workout,
+      programNotes, notesStatus, updateProgramNotes,
       byId,
       upsert,
       remove,
@@ -169,7 +200,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       exportJson,
       importJson,
     }),
-    [ready, loadError, retryLoad, exercises, workout, byId, upsert, remove, log, setBest, exportJson, importJson],
+    [programNotes, notesStatus, updateProgramNotes, ready, loadError, retryLoad, exercises, workout, byId, upsert, remove, log, setBest, exportJson, importJson],
   );
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;

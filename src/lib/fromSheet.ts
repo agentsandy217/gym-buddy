@@ -6,6 +6,7 @@ import type {
   SheetRow,
 } from "../types";
 import { parseSheetDate, parseSnapshot } from "./parse";
+import { parseTags } from "./tags";
 
 export function slug(name: string): string {
   const s = name
@@ -110,6 +111,7 @@ export function sheetToExercise(row: SheetRow, usedIds: Set<string>): Exercise {
     muscle,
     dayTypes: inferDayTypes(row, muscle),
     notes: row.notes,
+    tags: parseTags(row.subCategory),
     best,
     recents: [],
   };
@@ -119,5 +121,4 @@ export function sheetToExercises(rows: SheetRow[]): Exercise[] {
   const used = new Set<string>();
   return rows.map((row) => sheetToExercise(row, used));
 }
-
 

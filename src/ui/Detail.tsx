@@ -47,6 +47,11 @@ export function Detail({ exercise, onLog, onSetBest }: Props) {
         <span className="tag">{EQUIPMENT_LABEL[exercise.equipment]}</span>
       </div>
       <h1 className="detail-name">{exercise.name}</h1>
+      {!!exercise.tags?.length && (
+        <div className="tags">
+          {exercise.tags.map((tag, index) => <span className="tag" key={`${tag}-${index}`}>{tag}</span>)}
+        </div>
+      )}
       {exercise.notes ? (
         <section className="notes-block">
           <div className="stat-k">Notes</div>
