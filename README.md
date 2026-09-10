@@ -2,9 +2,9 @@
 
 A personal, phone-first tracker for **all-time best days**. It is not a set-by-set workout logger, not a program, and not a clone of Strong/Hevy.
 
-Live (home-screen web app): https://agentsandy217.github.io/cd13b22c2257d28c/
+Live (home-screen web app): https://agentsandy217.github.io/gym-buddy/
 
-Repo name is a random hex string on purpose. The site is public; **live logs stay on the phone**. The repo does contain the imported seed (`src/seed.json`, `exercises.csv`) — current bests and notes as they were when we left the spreadsheet.
+The site is public; **live logs stay on the phone**. The repo does contain the imported seed (`src/seed.json`, `exercises.csv`) — current bests and notes as they were when we left the spreadsheet.
 
 If you are an agent picking this up: read this file before changing product behavior. [`PLAN.md`](PLAN.md) is the original decision dump; some of its “next steps” are already done. **This README is the current source of truth.**
 
@@ -167,9 +167,9 @@ npm run build
 
 ## Deploy
 
-Push to `main` on `agentsandy217/cd13b22c2257d28c`. GitHub Actions builds and publishes:
+Push to `main` on `agentsandy217/gym-buddy`. GitHub Actions builds and publishes:
 
-https://agentsandy217.github.io/cd13b22c2257d28c/
+https://agentsandy217.github.io/gym-buddy/
 
 On iPhone: **Safari** (not Chrome) → that URL → Share → Add to Home Screen. Open from the icon so it stays standalone.
 
