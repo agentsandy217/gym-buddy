@@ -1,4 +1,5 @@
 import type { Exercise, ExportFile } from "../types";
+import { parseExportFile } from "./backup";
 
 const DB_NAME = "gym-buddy";
 const DB_VERSION = 1;
@@ -67,11 +68,14 @@ export function toExportFile(exercises: Exercise[]): ExportFile {
   };
 }
 
-export function parseExportFile(raw: unknown): Exercise[] {
-  if (!raw || typeof raw !== "object") throw new Error("Not a Gym Buddy backup.");
-  const data = raw as Partial<ExportFile>;
-  if (data.version !== 1 || !Array.isArray(data.exercises)) {
-    throw new Error("Not a Gym Buddy backup.");
+export async function importBackup(text: string): Promise<Exercise[]> {
+  let raw: unknown;
+  try {
+    raw = JSON.parse(text);
+  } catch {
+    throw new Error("Invalid backup: the file is not valid JSON. Nothing was imported.");
   }
-  return data.exercises;
+  const exercises = parseExportFile(raw);
+  await saveAll(exercises);
+  return exercises;
 }

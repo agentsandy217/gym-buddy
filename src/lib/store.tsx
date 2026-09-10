@@ -9,7 +9,7 @@ import {
 } from "react";
 import seedRows from "../seed.json";
 import type { Exercise, SheetRow, Snapshot } from "../types";
-import { deleteOne, loadAll, parseExportFile, saveAll, saveOne, toExportFile } from "./db";
+import { deleteOne, importBackup, loadAll, saveAll, saveOne, toExportFile } from "./db";
 import { sheetToExercises } from "./fromSheet";
 import { formatSnapshot, parseSnapshot, todayISO } from "./parse";
 import { isBetter } from "./rank";
@@ -113,8 +113,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const exportJson = useCallback(() => JSON.stringify(toExportFile(exercises), null, 2), [exercises]);
 
   const importJson = useCallback(async (text: string) => {
-    const list = parseExportFile(JSON.parse(text));
-    await saveAll(list);
+    const list = await importBackup(text);
     setExercises(sortExercises(list));
   }, []);
 

@@ -130,13 +130,15 @@ IndexedDB `gym-buddy` / store `exercises`. First visit with an empty DB **seeds*
 
 Seed pipeline: `exercises.csv` → `npm run seed` → `src/seed.json` via `scripts/build-seed.mjs` (drops Video categories and URL “bests”). Mapping/inference: `src/lib/fromSheet.ts`.
 
+Backup import validates every exercise, best, and recent snapshot before replacing any stored data (`src/lib/backup.ts`). Invalid records or duplicate exercise IDs reject the entire import with an error; existing data stays intact. A best can be `null` (new lifts or exercises tracked by feel), and mixed/free-text snapshots and empty snapshot dates remain supported.
+
 ### Parse (`src/lib/parse.ts`)
 
 - Split on commas, ignoring commas inside `(parentheses)`.
 - Token: `90x10` / `90 x 10` / `90×10` / `32.5x8` → loaded; `14` → reps; `1:40` → seconds.
 - Display normalizes to `90×10, 90×7, …`.
 
-Tests: `npm test` (parse, rank, seed, target). Keep them green if you touch ranking or parse.
+Tests: `npm test` (parse, rank, seed, target, backup validation, and database import). Import tests use a test-only IndexedDB implementation to verify rejected backups preserve existing records. Keep them green if you touch ranking, parse, or import.
 
 ---
 
