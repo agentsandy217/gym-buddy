@@ -1,5 +1,4 @@
 export type Route =
-  | { name: "today" }
   | { name: "lifts" }
   | { name: "backup" }
   | { name: "new" }
@@ -9,13 +8,14 @@ export type Route =
 export function parseHash(hash: string): Route {
   const path = hash.replace(/^#/, "") || "/";
   const parts = path.split("/").filter(Boolean);
-  if (parts.length === 0 || parts[0] === "today") return { name: "today" };
+  // Root and old Today bookmarks now open the muscle-filtered library.
+  if (parts.length === 0 || parts[0] === "today") return { name: "lifts" };
   if (parts[0] === "lifts") return { name: "lifts" };
   if (parts[0] === "backup") return { name: "backup" };
   if (parts[0] === "new") return { name: "new" };
   if (parts[0] === "e" && parts[1] && parts[2] === "edit") return { name: "edit", id: parts[1] };
   if (parts[0] === "e" && parts[1]) return { name: "detail", id: parts[1] };
-  return { name: "today" };
+  return { name: "lifts" };
 }
 
 export function go(to: string) {

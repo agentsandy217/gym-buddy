@@ -147,3 +147,41 @@ describe("startup recovery", () => {
     expect(JSON.parse(store.exportJson()).exercises).toEqual([exercise]);
   });
 });
+
+describe("library navigation", () => {
+  it.each(["", "#/", "#/today", "#/lifts"])("opens Lifts from %j with two tabs", async (hash) => {
+    window.history.replaceState(null, "", `/${hash}`);
+    vi.mocked(loadAll).mockResolvedValue([exercise]);
+    await render();
+    expect(container.querySelector("h1")?.textContent).toBe("Lifts");
+    expect(container.querySelector('input[type="search"]')?.getAttribute("placeholder")).toBe("Search lifts");
+    expect([...container.querySelectorAll("nav button")].map((button) => button.textContent)).toEqual(["Lifts", "Backup"]);
+    expect(container.querySelector("nav .on")?.textContent).toBe("Lifts");
+    expect(container.querySelector(".lift-name")?.textContent).toBe(exercise.name);
+    expect(saveAll).not.toHaveBeenCalled();
+  });
+
+  it("filters the home library by muscle and navigates between Lifts and Backup", async () => {
+    window.history.replaceState(null, "", "/");
+    vi.mocked(loadAll).mockResolvedValue([
+      exercise,
+      { ...exercise, id: "bench", name: "Bench press", muscle: "chest", dayTypes: ["push"] },
+    ]);
+    await render();
+    const chest = [...container.querySelectorAll<HTMLButtonElement>(".chip")].find((button) => button.textContent === "Chest")!;
+    await act(async () => chest.click());
+    expect([...container.querySelectorAll(".lift-name")].map((name) => name.textContent)).toEqual(["Bench press"]);
+    for (const tab of ["Backup", "Lifts"]) {
+      const button = [...container.querySelectorAll<HTMLButtonElement>("nav button")].find((button) => button.textContent === tab)!;
+      await act(async () => {
+        button.click();
+        // Deliver the hash navigation immediately in the test DOM.
+        window.dispatchEvent(new HashChangeEvent("hashchange"));
+      });
+      expect(container.querySelector("h1")?.textContent).toBe(tab);
+      expect(container.querySelector("nav .on")?.textContent).toBe(tab);
+    }
+    expect(store.exercises).toHaveLength(2);
+    expect(saveAll).not.toHaveBeenCalled();
+  });
+});

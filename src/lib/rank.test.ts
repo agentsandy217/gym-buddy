@@ -36,8 +36,8 @@ describe("isBetter", () => {
 });
 
 describe("targetShort", () => {
-  it("prints weight / top-set reps", () => {
-    expect(targetShort(snap("90x10, 90x7, 85x8, 80x8"))).toBe("90/10");
+  it("prints weight x top-set reps", () => {
+    expect(targetShort(snap("90x10, 90x7, 85x8, 80x8"))).toBe("90x10");
     expect(targetShort(snap("14, 11, 8"))).toBe("14");
   });
 });

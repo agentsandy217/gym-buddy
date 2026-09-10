@@ -5,7 +5,6 @@ import { Detail } from "./ui/Detail";
 import { Editor } from "./ui/Editor";
 import { Lifts } from "./ui/Lifts";
 import { Nav } from "./ui/Nav";
-import { Today } from "./ui/Today";
 import { Startup } from "./ui/Startup";
 import { parseHash, type Route } from "./ui/route";
 
@@ -27,11 +26,10 @@ export default function App() {
     return <Startup error={store.loadError} onRetry={store.retryLoad} />;
   }
 
-  const showNav = route.name === "today" || route.name === "lifts" || route.name === "backup";
+  const showNav = route.name === "lifts" || route.name === "backup";
 
   let body: ReactNode = null;
-  if (route.name === "today") body = <Today exercises={store.exercises} />;
-  else if (route.name === "lifts") body = <Lifts exercises={store.exercises} />;
+  if (route.name === "lifts") body = <Lifts exercises={store.exercises} />;
   else if (route.name === "backup") {
     body = (
       <Backup

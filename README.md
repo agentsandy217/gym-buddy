@@ -57,7 +57,7 @@ Kinds that auto-rank: **loaded** (weight×reps), **bodyweight** (reps only), **t
 
 Derived only from the first set of the current best (`src/lib/target.ts`):
 
-- Loaded: **Start 90. Beat 10.** Compact row form: `90/10`.
+- Loaded: **Start 90. Beat 10.** Compact row form: `90x10`.
 - If **every** set at that top weight is 12+ reps, suggest adding weight (5 lb if the load is a multiple of 5, else 2.5).
 - Bodyweight: **Beat 14.**
 - Timed: **Beat 1:40.**
@@ -65,7 +65,7 @@ Derived only from the first set of the current best (`src/lib/target.ts`):
 
 ### Not a locked program
 
-Push / Pull / Legs / Other is a **filter** on Today, not a prescribed routine. The owner mixes exercises from their list each session. Creating a lift is a name + equipment + muscle + day tags. No 5,000-exercise catalog.
+**Lifts is the home screen**, with search and muscle-group filters. The owner mixes exercises from their list each session; muscle groups matter more to them than Push / Pull / Legs. The former Today tab duplicated the library and has been removed. Creating a lift is a name + equipment + muscle + day tags. Existing day tags remain editable and are preserved in saved data and backups. No 5,000-exercise catalog.
 
 Sheet `Category` / `SubCategory` (e.g. `Fly, General`) was garbage. We inferred equipment from the name and muscle/day from category. Wrong guesses are fixable in **Edit**. Names with `x3`/`x4` were kept as separate lifts when they had different PRs — do not silently merge.
 
@@ -85,7 +85,7 @@ Stack: static Vite + React site on **GitHub Pages**. No backend. **IndexedDB** h
 
 ### UI
 
-The owner picked **logbook (direction D)** with **larger type closer to C**: dense rows, green target in the row (`90/10`), dark navy, blue chips. Not the original rust “scoreboard” cards. Don’t restyle for fun.
+The owner picked **logbook (direction D)** with **larger type closer to C**: dense rows, green target in the row (`90x10`), dark navy, blue chips. Not the original rust “scoreboard” cards. Don’t restyle for fun.
 
 ### AI is later, not the gym UI
 
@@ -105,14 +105,13 @@ Hash routing so GitHub Pages needs no rewrite rules.
 
 | Route | Screen | Job |
 |---|---|---|
-| `#/` | Today | Day filter → search → rows (name, full best line, date, green target) |
-| `#/lifts` | Lifts | Full library, muscle filter, **Add** |
+| `#/` or `#/lifts` | Lifts | Default screen: full library, search, muscle filter, best + date + green target, **Add** |
 | `#/e/:id` | Detail | Notes, top set, target, best + date, log shorthand, recents / set-as-best |
 | `#/e/:id/edit` | Editor | Name, muscle, equipment, day tags, notes, delete |
 | `#/new` | Editor | Create |
 | `#/backup` | Backup | Export JSON (share sheet / download); import replaces all |
 
-Bottom nav: Today / Lifts / Backup.
+Bottom nav: **Lifts / Backup**. Old `#/today` links also open Lifts. A third tab for queuing exercises for today’s workout is planned as a separate future change; no queue is implemented yet.
 
 ### Data model (`src/types.ts`)
 
@@ -148,7 +147,7 @@ Tests: `npm test` (parse, rank, seed, target, backup validation, database import
 
 ```
 src/lib/parse.ts rank.ts target.ts db.ts store.tsx fromSheet.ts
-src/ui/          Today, Lifts, Detail, Editor, Backup, Card (logbook row)
+src/ui/          Lifts, Detail, Editor, Backup, Startup, Nav, Card (logbook row)
 src/seed.json    Bundled first-run library
 exercises.csv    Original sheet export (videos still in the CSV; seed strips them)
 .github/workflows/pages.yml   Deploy dist/ to GitHub Pages on push to main
@@ -189,6 +188,7 @@ Native iOS/Android, paid hosting, user accounts, cloud sync of live logs, Cloudf
 
 ## Sensible next work (only if the owner wants it)
 
+- Add a third tab to queue exercises for today’s workout, as a separate step after removing Today.
 - Real gym use → logging UX, tag mistakes, target wording.
 - Cloudflare Access if they want the HTML gated to their email.
 - Richer parse (`90 for 10 then 7`).
