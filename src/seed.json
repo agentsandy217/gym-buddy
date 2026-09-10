@@ -1,0 +1,1186 @@
+[
+  {
+    "name": "Lat Pulldown One Arm (Neutral Grip)",
+    "category": "Back",
+    "subCategory": "Lats",
+    "best": "60x10, 60x8, 55x9",
+    "bestDate": "10/29/2025",
+    "notes": ""
+  },
+  {
+    "name": "Lat Pulldown One Arm (Sideways)",
+    "category": "Back",
+    "subCategory": "Lats",
+    "best": "65x9, 65x7, 60x9",
+    "bestDate": "7/7/2025",
+    "notes": ""
+  },
+  {
+    "name": "Straight Arm Lat Pull (Cable One Arm)",
+    "category": "Back",
+    "subCategory": "Lats",
+    "best": "35x8, 32.5x8, 30x8",
+    "bestDate": "8/21/2025",
+    "notes": ""
+  },
+  {
+    "name": "Straight Arm Lat Pull (Rope)",
+    "category": "Back",
+    "subCategory": "Lats",
+    "best": "50x11, 50x10, 50x8",
+    "bestDate": "1/1/2025",
+    "notes": "My old bests are way too heavy. The longer rope with good form is tough"
+  },
+  {
+    "name": "30 Pull Ups (Timed)",
+    "category": "Back",
+    "subCategory": "Pull Up",
+    "best": "1:46",
+    "bestDate": "3/4/2025",
+    "notes": ""
+  },
+  {
+    "name": "Chin Ups",
+    "category": "Back",
+    "subCategory": "Pull Up",
+    "best": "11, 10, 8",
+    "bestDate": "8/17/2026",
+    "notes": ""
+  },
+  {
+    "name": "Corn Cob Pull Ups",
+    "category": "Back",
+    "subCategory": "Pull Up",
+    "best": "3, 2, 2",
+    "bestDate": "12/19/2025",
+    "notes": ""
+  },
+  {
+    "name": "Dead Hang Pull Ups",
+    "category": "Back",
+    "subCategory": "Pull Up",
+    "best": "11, 9, 7",
+    "bestDate": "6/26/2026",
+    "notes": ""
+  },
+  {
+    "name": "Legs Out Pull Ups",
+    "category": "Back",
+    "subCategory": "Pull Up",
+    "best": "3, 3, 3",
+    "bestDate": "8/6/2026",
+    "notes": ""
+  },
+  {
+    "name": "Pause at Middle Pull Ups",
+    "category": "Back",
+    "subCategory": "Pull Up",
+    "best": "8, 7, 5",
+    "bestDate": "2/25/2026",
+    "notes": "pause both up and down"
+  },
+  {
+    "name": "Pause at Top Pull Ups",
+    "category": "Back",
+    "subCategory": "Pull Up",
+    "best": "9, 7, 6",
+    "bestDate": "8/6/2026",
+    "notes": ""
+  },
+  {
+    "name": "Pull Ups",
+    "category": "Back",
+    "subCategory": "Pull Up",
+    "best": "14, 11, 8",
+    "bestDate": "8/17/2026",
+    "notes": ""
+  },
+  {
+    "name": "Pull Ups (Weighted)",
+    "category": "Back",
+    "subCategory": "Pull Up",
+    "best": "25x8, 15x9, 15x8, 10x7",
+    "bestDate": "1/10/2025",
+    "notes": ""
+  },
+  {
+    "name": "Pull Ups (Weighted) x4",
+    "category": "Back",
+    "subCategory": "Pull Up",
+    "best": "25x8, 15x9, 15x8, 10x7",
+    "bestDate": "1/10/2025",
+    "notes": ""
+  },
+  {
+    "name": "Slow Pull Ups",
+    "category": "Back",
+    "subCategory": "Pull Up",
+    "best": "7, 6, 5",
+    "bestDate": "12/19/2025",
+    "notes": "slow up and down"
+  },
+  {
+    "name": "Barbell Row x4",
+    "category": "Back",
+    "subCategory": "Row",
+    "best": "185x10, 185x8, 175x9, 175x7",
+    "bestDate": "8/15/2025",
+    "notes": ""
+  },
+  {
+    "name": "Bent Over One Arm Dumbbell Row",
+    "category": "Back",
+    "subCategory": "Row",
+    "best": "80x12, 80x10, 80x8",
+    "bestDate": "3/12/2026",
+    "notes": ""
+  },
+  {
+    "name": "Cable Row (One Arm Sit on Bench)",
+    "category": "Back",
+    "subCategory": "Row",
+    "best": "65x8, 60x10, 60x8",
+    "bestDate": "7/30/2025",
+    "notes": ""
+  },
+  {
+    "name": "Inverted Row",
+    "category": "Back",
+    "subCategory": "Row",
+    "best": "18, 16, 15",
+    "bestDate": "2/22/2025",
+    "notes": "Slow, controlled, chest touches bar, try best not to use legs"
+  },
+  {
+    "name": "T-Bar Row",
+    "category": "Back",
+    "subCategory": "Row",
+    "best": "125x10, 125x8, 120x9",
+    "bestDate": "2/7/2025",
+    "notes": ""
+  },
+  {
+    "name": "T-Bar Row (Neutral Grip)",
+    "category": "Back",
+    "subCategory": "Row",
+    "best": "",
+    "bestDate": "",
+    "notes": ""
+  },
+  {
+    "name": "T-Bar Row (Neutral Grip) x4",
+    "category": "Back",
+    "subCategory": "Row",
+    "best": "135x8, 125x9, 125x8, 115x10",
+    "bestDate": "9/4/2026",
+    "notes": ""
+  },
+  {
+    "name": "T-Bar Row x4",
+    "category": "Back",
+    "subCategory": "Row",
+    "best": "145x8, 135x10, 135x9, 135x8",
+    "bestDate": "10/17/2025",
+    "notes": ""
+  },
+  {
+    "name": "Bicep Curl (W Bar)",
+    "category": "Biceps",
+    "subCategory": "",
+    "best": "30x9, 30x8, 27.5x8",
+    "bestDate": "11/4/2025",
+    "notes": "Just put the amount of weight on each side of the bar. 15lbs means a 15 plate on each side"
+  },
+  {
+    "name": "Concentration Curl",
+    "category": "Biceps",
+    "subCategory": "",
+    "best": "30x8, 25x10, 25x8",
+    "bestDate": "3/29/2025",
+    "notes": ""
+  },
+  {
+    "name": "Dumbbell Curl Start Neutral, Supinate, One Arm At a Time",
+    "category": "Biceps",
+    "subCategory": "",
+    "best": "35x11, 35x10, 35x8",
+    "bestDate": "8/6/2026",
+    "notes": ""
+  },
+  {
+    "name": "Dumbbell Curl Start Supinated. Both Arms Same Time",
+    "category": "Biceps",
+    "subCategory": "",
+    "best": "30x12, 30x10, 30x8",
+    "bestDate": "7/29/2026",
+    "notes": ""
+  },
+  {
+    "name": "Hammer Curl Dumbbell. Both Arms Same Time",
+    "category": "Biceps",
+    "subCategory": "",
+    "best": "35x9, 35x8, 30x10",
+    "bestDate": "1/1/2025",
+    "notes": "My old bests are too heavy with bad form"
+  },
+  {
+    "name": "Hammer Curl Dumbbell. One Arm At a Time",
+    "category": "Biceps",
+    "subCategory": "",
+    "best": "35x10, 35x8, 30x10",
+    "bestDate": "8/11/2026",
+    "notes": ""
+  },
+  {
+    "name": "Incline Curl",
+    "category": "Biceps",
+    "subCategory": "",
+    "best": "30x10, 30x8, 25x10",
+    "bestDate": "7/1/2025",
+    "notes": ""
+  },
+  {
+    "name": "Chest Fly Cable One Arm",
+    "category": "Chest",
+    "subCategory": "Fly, General",
+    "best": "27.5x10, 27.5x8, 25x8",
+    "bestDate": "6/4/2025",
+    "notes": ""
+  },
+  {
+    "name": "Chest Fly Dumbbell",
+    "category": "Chest",
+    "subCategory": "Fly, General",
+    "best": "55x9, 55x7, 50x8",
+    "bestDate": "8/4/2026",
+    "notes": ""
+  },
+  {
+    "name": "Chest Fly Dumbbell on Floor",
+    "category": "Chest",
+    "subCategory": "Fly, General",
+    "best": "35x12, 45x9, 45x8",
+    "bestDate": "10/4/2025",
+    "notes": "Not a great exercise. No stretch"
+  },
+  {
+    "name": "Incline Chest Fly Dumbbell",
+    "category": "Chest",
+    "subCategory": "Fly, Upper Chest",
+    "best": "50x10, 50x8, 45x10",
+    "bestDate": "3/20/2025",
+    "notes": ""
+  },
+  {
+    "name": "Bench Press Barbell x4",
+    "category": "Chest",
+    "subCategory": "Heavy Press, General",
+    "best": "205x11, 205x9, 205x8, 195x8",
+    "bestDate": "4/13/2025",
+    "notes": ""
+  },
+  {
+    "name": "Bench Press Flat Dumbbell x3",
+    "category": "Chest",
+    "subCategory": "Heavy Press, General",
+    "best": "75x11, 75x9, 75x8",
+    "bestDate": "12/9/2024",
+    "notes": ""
+  },
+  {
+    "name": "Bench Press Flat Dumbbell x4",
+    "category": "Chest",
+    "subCategory": "Heavy Press, General",
+    "best": "90x10, 90x7, 85x8, 80x8",
+    "bestDate": "12/4/2025",
+    "notes": ""
+  },
+  {
+    "name": "Incline Bench Press Dumbbell",
+    "category": "Chest",
+    "subCategory": "Heavy Press, Upper Chest",
+    "best": "75x8, 65x10, 65x8",
+    "bestDate": "11/19/2024",
+    "notes": ""
+  },
+  {
+    "name": "Incline Bench Press Dumbbell x4",
+    "category": "Chest",
+    "subCategory": "Heavy Press, Upper Chest",
+    "best": "80x11, 80x8, 75x8, 70x9",
+    "bestDate": "7/27/2025",
+    "notes": ""
+  },
+  {
+    "name": "Incline Bench Press x4",
+    "category": "Chest",
+    "subCategory": "Heavy Press, Upper Chest",
+    "best": "175x8, 165x10, 165x7, 155x8",
+    "bestDate": "12/9/2025",
+    "notes": ""
+  },
+  {
+    "name": "Chest Dip",
+    "category": "Chest",
+    "subCategory": "Lower",
+    "best": "22, 20, 18",
+    "bestDate": "3/11/2026",
+    "notes": ""
+  },
+  {
+    "name": "Chest Dip (Weighted)",
+    "category": "Chest",
+    "subCategory": "Lower",
+    "best": "45x11, 45x9, 45x8",
+    "bestDate": "1/21/2025",
+    "notes": ""
+  },
+  {
+    "name": "Chest Dip Plus",
+    "category": "Chest",
+    "subCategory": "Lower",
+    "best": "",
+    "bestDate": "",
+    "notes": "The plus doesn't really add much to the chest for me"
+  },
+  {
+    "name": "Chest Fly Cable One Arm (Decline)",
+    "category": "Chest",
+    "subCategory": "Lower",
+    "best": "32.5x10, 32.5x10, 32.5x8",
+    "bestDate": "12/31/2024",
+    "notes": ""
+  },
+  {
+    "name": "Archer Push Up (Per Side)",
+    "category": "Chest",
+    "subCategory": "Push Up, General",
+    "best": "10, 8, 6",
+    "bestDate": "12/11/2025",
+    "notes": ""
+  },
+  {
+    "name": "Close Grip Push Up (Tricep/Military)",
+    "category": "Chest",
+    "subCategory": "Push Up, General",
+    "best": "30, 26, 24",
+    "bestDate": "3/22/2026",
+    "notes": ""
+  },
+  {
+    "name": "Diamond Push Up",
+    "category": "Chest",
+    "subCategory": "Push Up, General",
+    "best": "25, 22, 20",
+    "bestDate": "2/24/2026",
+    "notes": ""
+  },
+  {
+    "name": "Dive Bomber Push Up",
+    "category": "Chest",
+    "subCategory": "Push Up, General",
+    "best": "14, 12, 9",
+    "bestDate": "10/16/2025",
+    "notes": ""
+  },
+  {
+    "name": "Plyo Push Up",
+    "category": "Chest",
+    "subCategory": "Push Up, General",
+    "best": "19, 15, 13",
+    "bestDate": "8/4/2026",
+    "notes": "Just like push your hands off the ground"
+  },
+  {
+    "name": "Push Ups",
+    "category": "Chest",
+    "subCategory": "Push Up, General",
+    "best": "42, 34, 30",
+    "bestDate": "8/30/2026",
+    "notes": ""
+  },
+  {
+    "name": "Decline Push Up",
+    "category": "Chest",
+    "subCategory": "Push Up, Upper Chest",
+    "best": "37, 28, 24",
+    "bestDate": "1/25/2026",
+    "notes": ""
+  },
+  {
+    "name": "Ab Circuit: 14lb Russian Twist, Lying Leg Raises, Plank",
+    "category": "Core",
+    "subCategory": "Ab Circuit",
+    "best": "23, 16, 1:10",
+    "bestDate": "7/10/2025",
+    "notes": ""
+  },
+  {
+    "name": "Ab Circuit: Bicycles, Crunches, Lying Leg Hold 6 inches off ground",
+    "category": "Core",
+    "subCategory": "Ab Circuit",
+    "best": "32, 16, 0:35",
+    "bestDate": "8/24/2025",
+    "notes": ""
+  },
+  {
+    "name": "Ab Wheel",
+    "category": "Core",
+    "subCategory": "Anti-Extension (Resist Arching Back)",
+    "best": "18, 16, 14",
+    "bestDate": "12/10/2025",
+    "notes": ""
+  },
+  {
+    "name": "Dead Bugs (Per Side)",
+    "category": "Core",
+    "subCategory": "Anti-Extension (Resist Arching Back)",
+    "best": "15x10, 15x8, 10x10",
+    "bestDate": "8/30/2026",
+    "notes": "hold dumbbells"
+  },
+  {
+    "name": "Hollow Body Holds",
+    "category": "Core",
+    "subCategory": "Anti-Extension (Resist Arching Back)",
+    "best": "0:45, 0:35, 0:30",
+    "bestDate": "1/5/2026",
+    "notes": "instead of one long hold can do 10 seconds on, 5 seconds off or something"
+  },
+  {
+    "name": "Plank",
+    "category": "Core",
+    "subCategory": "Anti-Extension (Resist Arching Back)",
+    "best": "1:40",
+    "bestDate": "8/4/2026",
+    "notes": ""
+  },
+  {
+    "name": "Plank With Shoulder Taps (Taps Per Side)",
+    "category": "Core",
+    "subCategory": "Anti-Extension (Resist Arching Back)",
+    "best": "21, 17, 15",
+    "bestDate": "3/27/2026",
+    "notes": ""
+  },
+  {
+    "name": "Renegade Rows (Per Side)",
+    "category": "Core",
+    "subCategory": "Anti-Extension (Resist Arching Back)",
+    "best": "15x6, 15x5, 10x4",
+    "bestDate": "12/11/2025",
+    "notes": "Don't swing. Goal is to hold with abs"
+  },
+  {
+    "name": "Reverse Hyper",
+    "category": "Core",
+    "subCategory": "Anti-Flexion (Resist Rounding Forward)",
+    "best": "",
+    "bestDate": "12/14/2025",
+    "notes": ""
+  },
+  {
+    "name": "Copenhagen Plank (one side, rest, other)",
+    "category": "Core",
+    "subCategory": "Anti-Lateral Flexion",
+    "best": "0:35, 0:25",
+    "bestDate": "8/17/2026",
+    "notes": "Just foot on bench is hard on abductor. Knee on bench is more abs. Still hard on abductor either way"
+  },
+  {
+    "name": "Side Plank",
+    "category": "Core",
+    "subCategory": "Anti-Lateral Flexion",
+    "best": "1:05 rest, then same other side",
+    "bestDate": "3/26/2026",
+    "notes": ""
+  },
+  {
+    "name": "Suitcase Carry (steps per side)",
+    "category": "Core",
+    "subCategory": "Anti-Lateral Flexion",
+    "best": "90x22 (22 left, rest, 22 right), 90x20 (20 left, rest, 20 right)",
+    "bestDate": "2/14/2026",
+    "notes": ""
+  },
+  {
+    "name": "Farmer Carry (steps per side)",
+    "category": "Core",
+    "subCategory": "Anti-Rotation",
+    "best": "90x40, 90x32, 90x29",
+    "bestDate": "1/16/2026",
+    "notes": ""
+  },
+  {
+    "name": "Landmine Rotations",
+    "category": "Core",
+    "subCategory": "Anti-Rotation",
+    "best": "7.5x10, 7.5x8, 5x8",
+    "bestDate": "3/13/2026",
+    "notes": "can also stop at the top and do one side at a time if that's better. Just half circles"
+  },
+  {
+    "name": "Pallof Press",
+    "category": "Core",
+    "subCategory": "Anti-Rotation",
+    "best": "",
+    "bestDate": "12/14/2025",
+    "notes": "Black band. see this video. The part that looks like he's pulling is rest. The push is working: https://www.instagram.com/p/DRSF-upDK_W/?img_index=1"
+  },
+  {
+    "name": "Crunch (AbMat)",
+    "category": "Core",
+    "subCategory": "Flexion",
+    "best": "16, 12, 10",
+    "bestDate": "10/7/2025",
+    "notes": ""
+  },
+  {
+    "name": "Decline Sit Up",
+    "category": "Core",
+    "subCategory": "Flexion",
+    "best": "16, 13, 10",
+    "bestDate": "7/29/2025",
+    "notes": ""
+  },
+  {
+    "name": "Hanging Leg Raise",
+    "category": "Core",
+    "subCategory": "Flexion",
+    "best": "14, 10, 8",
+    "bestDate": "7/6/2025",
+    "notes": ""
+  },
+  {
+    "name": "Crunch (AbMat Oblique # per side)",
+    "category": "Core",
+    "subCategory": "Flexion, Oblique",
+    "best": "8, 7, 6",
+    "bestDate": "10/30/2025",
+    "notes": ""
+  },
+  {
+    "name": "Decline Oblique Sit Up (Reps per Side)",
+    "category": "Core",
+    "subCategory": "Flexion, Oblique",
+    "best": "7, 5, 4",
+    "bestDate": "10/17/2025",
+    "notes": ""
+  },
+  {
+    "name": "Ball Slams",
+    "category": "Core",
+    "subCategory": "Power",
+    "best": "20x20, 20x17, 20x15",
+    "bestDate": "7/5/2026",
+    "notes": ""
+  },
+  {
+    "name": "Band Rotations",
+    "category": "Core",
+    "subCategory": "Power",
+    "best": "",
+    "bestDate": "",
+    "notes": "One peg, on the wall side of the power rack, belly button height. Blue band"
+  },
+  {
+    "name": "Sideways Throws (No Release)",
+    "category": "Core",
+    "subCategory": "Power",
+    "best": "20x12, 20x10, 20x8",
+    "bestDate": "1/16/2026",
+    "notes": ""
+  },
+  {
+    "name": "Woodchoppers (Band)",
+    "category": "Core",
+    "subCategory": "Power",
+    "best": "",
+    "bestDate": "12/23/2025",
+    "notes": "Peg all the way bottom of rack, blue band. Try red next time"
+  },
+  {
+    "name": "Russian Twist (Holding 14lb Ball, Per Side)",
+    "category": "Core",
+    "subCategory": "Rotation",
+    "best": "21, 18, 16",
+    "bestDate": "12/5/2025",
+    "notes": ""
+  },
+  {
+    "name": "Front Raise (Barbell)",
+    "category": "Delts",
+    "subCategory": "Anterior",
+    "best": "60x8, 55x10, 55x8",
+    "bestDate": "4/8/2025",
+    "notes": ""
+  },
+  {
+    "name": "Front Raise (Dumbbell)",
+    "category": "Delts",
+    "subCategory": "Anterior",
+    "best": "30x10, 30x8, 25x10",
+    "bestDate": "1/3/2025",
+    "notes": ""
+  },
+  {
+    "name": "Scoop Press",
+    "category": "Delts",
+    "subCategory": "Anterior",
+    "best": "30x10, 30x7, 25x10",
+    "bestDate": "3/5/2025",
+    "notes": ""
+  },
+  {
+    "name": "Arnold Lying Lateral Raises",
+    "category": "Delts",
+    "subCategory": "General",
+    "best": "20x10, 20x8, 15x10",
+    "bestDate": "8/14/2025",
+    "notes": "Use the flat bench. Hands can go on ground if the feet of bench isn't comfortable"
+  },
+  {
+    "name": "Lateral Raise",
+    "category": "Delts",
+    "subCategory": "General",
+    "best": "40x8, 35x10, 35x8",
+    "bestDate": "5/9/2025",
+    "notes": ""
+  },
+  {
+    "name": "Lateral Raise (Band)",
+    "category": "Delts",
+    "subCategory": "General",
+    "best": "",
+    "bestDate": "",
+    "notes": "Black band"
+  },
+  {
+    "name": "Lateral Raise (Lean In)",
+    "category": "Delts",
+    "subCategory": "General",
+    "best": "25x12, 25x10, 25x8",
+    "bestDate": "8/23/2026",
+    "notes": ""
+  },
+  {
+    "name": "Lateral Raise (Lean Out, Cheat Up Slow Down)",
+    "category": "Delts",
+    "subCategory": "General",
+    "best": "45x8, 40x10, 40x8",
+    "bestDate": "3/15/2026",
+    "notes": ""
+  },
+  {
+    "name": "Landmine Shoulder Press",
+    "category": "Delts",
+    "subCategory": "Heavy Press",
+    "best": "45x10, 45x8, 45x7",
+    "bestDate": "12/16/2025",
+    "notes": ""
+  },
+  {
+    "name": "Overhead Press Barbell (Standing)",
+    "category": "Delts",
+    "subCategory": "Heavy Press",
+    "best": "95x10, 95x7, 85x9",
+    "bestDate": "11/8/2025",
+    "notes": ""
+  },
+  {
+    "name": "Overhead Press Barbell (Standing) x4",
+    "category": "Delts",
+    "subCategory": "Heavy Press",
+    "best": "115x8, 105x8, 95x9, 95x7",
+    "bestDate": "11/30/2024",
+    "notes": ""
+  },
+  {
+    "name": "Overhead Press Dumbbell (Standing)",
+    "category": "Delts",
+    "subCategory": "Heavy Press",
+    "best": "45x10, 45x9, 45x8",
+    "bestDate": "7/5/2026",
+    "notes": ""
+  },
+  {
+    "name": "Overhead Press Dumbbell (Standing) x4",
+    "category": "Delts",
+    "subCategory": "Heavy Press",
+    "best": "45x12, 45x10, 45x8, 40x10",
+    "bestDate": "4/8/2025",
+    "notes": ""
+  },
+  {
+    "name": "Shoulder Press (Dumbbell Seated)",
+    "category": "Delts",
+    "subCategory": "Heavy Press",
+    "best": "55x7, 50x9, 50x7",
+    "bestDate": "11/12/2025",
+    "notes": "Touch dumbbells to shoulders. Try to keep lower back on bench"
+  },
+  {
+    "name": "Shoulder Press (Dumbbell Seated) x4",
+    "category": "Delts",
+    "subCategory": "Heavy Press",
+    "best": "55x11, 55x8, 50x10, 50x8",
+    "bestDate": "4/1/2025",
+    "notes": "Touch dumbbells to shoulders. Try to keep lower back on bench"
+  },
+  {
+    "name": "Scapular Pull Ups",
+    "category": "Delts",
+    "subCategory": "Posterior",
+    "best": "10, 8, 6",
+    "bestDate": "12/12/2025",
+    "notes": ""
+  },
+  {
+    "name": "Band External Rotation",
+    "category": "Delts",
+    "subCategory": "Mobility",
+    "best": "Black band is heavy, yellow a lil light",
+    "bestDate": "1/6/2026",
+    "notes": ""
+  },
+  {
+    "name": "Band Internal Rotation",
+    "category": "Delts",
+    "subCategory": "Mobility",
+    "best": "Green band",
+    "bestDate": "",
+    "notes": ""
+  },
+  {
+    "name": "Scapular Wall Slides",
+    "category": "Delts",
+    "subCategory": "Mobility",
+    "best": "",
+    "bestDate": "",
+    "notes": ""
+  },
+  {
+    "name": "Abduction Row",
+    "category": "Delts",
+    "subCategory": "Posterior",
+    "best": "50x10, 50x10, 50x8",
+    "bestDate": "2/28/2025",
+    "notes": "Not a big fan of these"
+  },
+  {
+    "name": "Face Pulls",
+    "category": "Delts",
+    "subCategory": "Posterior",
+    "best": "50x10, 50x8, 45x8",
+    "bestDate": "7/2/2026",
+    "notes": "Make sure thumbs face straight back at top of movement"
+  },
+  {
+    "name": "High Cable Row (One Arm)",
+    "category": "Delts",
+    "subCategory": "Posterior",
+    "best": "50x10, 50x8, 45x8",
+    "bestDate": "9/11/2025",
+    "notes": ""
+  },
+  {
+    "name": "Rear Delt Dumbbell Flys Seated Bent Over",
+    "category": "Delts",
+    "subCategory": "Posterior",
+    "best": "40x11, 40x10, 40x8",
+    "bestDate": "7/18/2025",
+    "notes": ""
+  },
+  {
+    "name": "Rear Delt One Arm Flys (Cable)",
+    "category": "Delts",
+    "subCategory": "Posterior",
+    "best": "22.5x9, 22.5x8, 20x8",
+    "bestDate": "2/24/2025",
+    "notes": ""
+  },
+  {
+    "name": "Rear Delt One Arm Flys (Dumbbell Kneel Over Bench)",
+    "category": "Delts",
+    "subCategory": "Posterior",
+    "best": "35x10, 35x8, 30x10",
+    "bestDate": "11/9/2025",
+    "notes": ""
+  },
+  {
+    "name": "Upright Row (Barbell)",
+    "category": "Delts",
+    "subCategory": "Posterior",
+    "best": "105x10, 105x9, 105x8",
+    "bestDate": "1/3/2025",
+    "notes": ""
+  },
+  {
+    "name": "Upright Row (Dumbbell)",
+    "category": "Delts",
+    "subCategory": "Posterior",
+    "best": "55x8, 50x10, 50x8",
+    "bestDate": "3/17/2025",
+    "notes": ""
+  },
+  {
+    "name": "Shrugs (Dumbbell)",
+    "category": "Delts",
+    "subCategory": "Traps",
+    "best": "90x16, 90x15, 90x14",
+    "bestDate": "2/28/2025",
+    "notes": "Not the best trap exercise. Hex bar is better because your arms go out wider"
+  },
+  {
+    "name": "Shrugs (Hex Bar)",
+    "category": "Delts",
+    "subCategory": "Traps",
+    "best": "265x10, 265x8, 255x10",
+    "bestDate": "2/11/2025",
+    "notes": ""
+  },
+  {
+    "name": "Burpees",
+    "category": "Full Body",
+    "subCategory": "Cardio",
+    "best": "16, 13, 10",
+    "bestDate": "8/6/2026",
+    "notes": ""
+  },
+  {
+    "name": "Jump Rope",
+    "category": "Full Body",
+    "subCategory": "Cardio",
+    "best": "1:10, 1:05, 1:00",
+    "bestDate": "1/9/2025",
+    "notes": "1 min between sets. Time it"
+  },
+  {
+    "name": "Mountain Climbers",
+    "category": "Full Body",
+    "subCategory": "Cardio",
+    "best": "35, 30, 25",
+    "bestDate": "12/19/2025",
+    "notes": ""
+  },
+  {
+    "name": "Calf Raise Bodyweight on Power Rack",
+    "category": "Lower Body",
+    "subCategory": "Calves",
+    "best": "25, 20, 21",
+    "bestDate": "3/31/2025",
+    "notes": "Set 1 toes pointed out, set 2 in, set 3 straight"
+  },
+  {
+    "name": "Calf Raise Dumbbell Toes Elevated",
+    "category": "Lower Body",
+    "subCategory": "Calves",
+    "best": "90x14, 90x12, 90x10",
+    "bestDate": "8/21/2025",
+    "notes": ""
+  },
+  {
+    "name": "Wall Sit (One Set)",
+    "category": "Lower Body",
+    "subCategory": "General",
+    "best": "1:05",
+    "bestDate": "9/12/2025",
+    "notes": ""
+  },
+  {
+    "name": "Box Jumps (30\")",
+    "category": "Lower Body",
+    "subCategory": "General, Athletic Power",
+    "best": "19, 16, 14",
+    "bestDate": "12/30/2024",
+    "notes": ""
+  },
+  {
+    "name": "Kettlebell Swings",
+    "category": "Lower Body",
+    "subCategory": "General, Athletic Power",
+    "best": "40x15, 40x12, 40x10",
+    "bestDate": "12/23/2025",
+    "notes": "Might need more weight. Should honestly research kettlebell exercises"
+  },
+  {
+    "name": "Jump Squats bodyweight",
+    "category": "Lower Body",
+    "subCategory": "General, Athletic Power",
+    "best": "20, 16, 13",
+    "bestDate": "8/13/2026",
+    "notes": ""
+  },
+  {
+    "name": "Jump Squats with 14lb Ball",
+    "category": "Lower Body",
+    "subCategory": "General, Athletic Power",
+    "best": "19, 15, 13",
+    "bestDate": "7/28/2025",
+    "notes": ""
+  },
+  {
+    "name": "Jump Squats with 20lb Ball",
+    "category": "Lower Body",
+    "subCategory": "General, Athletic Power",
+    "best": "19, 15, 13",
+    "bestDate": "1/23/2026",
+    "notes": ""
+  },
+  {
+    "name": "Jump Lunges (Per Side)",
+    "category": "Lower Body",
+    "subCategory": "General, Cardio",
+    "best": "16, 15, 14",
+    "bestDate": "1/18/2026",
+    "notes": ""
+  },
+  {
+    "name": "Bulgarian Split Squat x4",
+    "category": "Lower Body",
+    "subCategory": "General, Heavy",
+    "best": "55x10, 55x8, 50x10, 50x8",
+    "bestDate": "12/8/2024",
+    "notes": ""
+  },
+  {
+    "name": "Goblet Squats (Kettlebell)",
+    "category": "Lower Body",
+    "subCategory": "General, Heavy",
+    "best": "40x18, 40x15, 40x12",
+    "bestDate": "8/7/2026",
+    "notes": "Can also do slow 3-5 seconds down or hold at bottom if they can't be that heavy"
+  },
+  {
+    "name": "Hex Bar Squat x4",
+    "category": "Lower Body",
+    "subCategory": "General, Heavy",
+    "best": "185x12, 185x10, 185x9, 185x8",
+    "bestDate": "12/23/2025",
+    "notes": ""
+  },
+  {
+    "name": "Hip Thrust (Barbell) x4",
+    "category": "Lower Body",
+    "subCategory": "General, Heavy",
+    "best": "245x10, 245x8, 225x10, 225x8",
+    "bestDate": "5/8/2025",
+    "notes": ""
+  },
+  {
+    "name": "Lunge (Dumbbell, One leg, rest, then other leg)",
+    "category": "Lower Body",
+    "subCategory": "General, Heavy",
+    "best": "50x9, 50x8, 45x10",
+    "bestDate": "8/13/2026",
+    "notes": ""
+  },
+  {
+    "name": "Reverse Lunge (Dumbbell)",
+    "category": "Lower Body",
+    "subCategory": "General, Heavy",
+    "best": "55x12, 55x10, 55x8",
+    "bestDate": "6/20/2026",
+    "notes": ""
+  },
+  {
+    "name": "Reverse Lunge (Landmine)",
+    "category": "Lower Body",
+    "subCategory": "General, Heavy",
+    "best": "60x10, 60x8, 55x8",
+    "bestDate": "7/24/2026",
+    "notes": ""
+  },
+  {
+    "name": "Romanian Deadlift (Barbell)",
+    "category": "Lower Body",
+    "subCategory": "General, Heavy",
+    "best": "145x12, 145x10, 145x8",
+    "bestDate": "1/11/2026",
+    "notes": ""
+  },
+  {
+    "name": "Romanian Deadlift (Dumbbell)",
+    "category": "Lower Body",
+    "subCategory": "General, Heavy",
+    "best": "60x10, 60x8, 55x10",
+    "bestDate": "7/24/2026",
+    "notes": ""
+  },
+  {
+    "name": "Squat x4",
+    "category": "Lower Body",
+    "subCategory": "General, Heavy",
+    "best": "255x4, 245x5, 245x4, 235x4",
+    "bestDate": "4/7/2025",
+    "notes": "Shoot for 5 reps"
+  },
+  {
+    "name": "Step Ups, 20in, one foot at time",
+    "category": "Lower Body",
+    "subCategory": "General, Heavy",
+    "best": "40x8, 35x10, 35x8",
+    "bestDate": "3/13/2026",
+    "notes": ""
+  },
+  {
+    "name": "Step Ups, 24 in, one foot at a time",
+    "category": "Lower Body",
+    "subCategory": "General, Heavy",
+    "best": "30x8, 25x8, 20x8",
+    "bestDate": "1/8/2026",
+    "notes": "This is a pretty high step"
+  },
+  {
+    "name": "Pistol Squat",
+    "category": "Lower Body",
+    "subCategory": "General, Mobility",
+    "best": "",
+    "bestDate": "",
+    "notes": ""
+  },
+  {
+    "name": "Skater Squats",
+    "category": "Lower Body",
+    "subCategory": "General, Mobility",
+    "best": "",
+    "bestDate": "12/14/2025",
+    "notes": "Basically reverse lunge but don't let toe hit ground. Use yoga blocks for now"
+  },
+  {
+    "name": "Cable Cuff Kickbacks",
+    "category": "Lower Body",
+    "subCategory": "Glutes",
+    "best": "22.5x12, 22.5x10, 22.5x8",
+    "bestDate": "4/7/2025",
+    "notes": ""
+  },
+  {
+    "name": "Prone Glute Kicks",
+    "category": "Lower Body",
+    "subCategory": "Glutes",
+    "best": "12, 11, 10",
+    "bestDate": "11/23/2024",
+    "notes": "Focus on form. Slow"
+  },
+  {
+    "name": "Hip Thrust (Bodyweight, Both Legs)",
+    "category": "Lower Body",
+    "subCategory": "Hamstrings",
+    "best": "",
+    "bestDate": "",
+    "notes": ""
+  },
+  {
+    "name": "Hip Thrust (Bodyweight, One Leg at a Time)",
+    "category": "Lower Body",
+    "subCategory": "Hamstrings",
+    "best": "",
+    "bestDate": "",
+    "notes": ""
+  },
+  {
+    "name": "Leg Curl (Standing Cable)",
+    "category": "Lower Body",
+    "subCategory": "Hamstrings",
+    "best": "35x8, 32.5x10, 32.5x8",
+    "bestDate": "8/7/2025",
+    "notes": ""
+  },
+  {
+    "name": "Nordic Curls",
+    "category": "Lower Body",
+    "subCategory": "Hamstrings",
+    "best": "",
+    "bestDate": "",
+    "notes": "This link has a pic of how to do it: https://repfitness.com/products/ab-5000-5100-leg-attachment?variant=41067581800606&country=US&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gad_campaignid=23193314099&gclid=Cj0KCQiAyP3KBhD9ARIsAAJLnnZc_ZfJOoAXkJF4gCB7icplK4YagXP-nrnRg0C-BKdj9QPy1Q7Jlh8aAnDhEALw_wcB"
+  },
+  {
+    "name": "Leg Extension (Seated Cable)",
+    "category": "Lower Body",
+    "subCategory": "Quads",
+    "best": "35x12, 35x12, 35x12",
+    "bestDate": "12/1/2024",
+    "notes": ""
+  },
+  {
+    "name": "Bench Dips",
+    "category": "Triceps",
+    "subCategory": "",
+    "best": "35, 30, 25",
+    "bestDate": "11/15/2025",
+    "notes": "I do feel these but they probably aren't the best"
+  },
+  {
+    "name": "Bench Press Barbell (Close Grip)",
+    "category": "Triceps",
+    "subCategory": "",
+    "best": "135x9, 135x8, 125x10",
+    "bestDate": "2/21/2025",
+    "notes": "Try not to bounce off the chest"
+  },
+  {
+    "name": "Skullcrusher Dumbbell",
+    "category": "Triceps",
+    "subCategory": "",
+    "best": "30x10, 30x8, 25x12",
+    "bestDate": "3/14/2025",
+    "notes": ""
+  },
+  {
+    "name": "Skullcrusher W Bar",
+    "category": "Triceps",
+    "subCategory": "",
+    "best": "27.5x12, 27.5x10, 27.5x10",
+    "bestDate": "8/30/2026",
+    "notes": "Just put the amount of weight on each side of the bar. 15lbs means a 15 plate on each side"
+  },
+  {
+    "name": "Tricep Extension (Cable Overhead One Arm)",
+    "category": "Triceps",
+    "subCategory": "",
+    "best": "",
+    "bestDate": "",
+    "notes": ""
+  },
+  {
+    "name": "Tricep Kickback (Dumbbell)",
+    "category": "Triceps",
+    "subCategory": "",
+    "best": "30x8, 25x10, 25x8",
+    "bestDate": "11/4/2025",
+    "notes": ""
+  },
+  {
+    "name": "Tricep Pushdown Cable (One Arm at a Time, Handle Grip Overhand)",
+    "category": "Triceps",
+    "subCategory": "",
+    "best": "22.5x12, 22.5x10, 22.5x8",
+    "bestDate": "12/9/2025",
+    "notes": ""
+  },
+  {
+    "name": "Tricep Pushdown Cable (One Arm at a Time, Handle Grip Underhand)",
+    "category": "Triceps",
+    "subCategory": "",
+    "best": "22.5x8, 20x10, 20x8",
+    "bestDate": "8/10/2026",
+    "notes": ""
+  },
+  {
+    "name": "Tricep Pushdown Cable (One Arm at a Time, No Handle)",
+    "category": "Triceps",
+    "subCategory": "",
+    "best": "27.5x8, 25x9, 25x8",
+    "bestDate": "6/17/2025",
+    "notes": ""
+  },
+  {
+    "name": "Tricep Pushdown Rope",
+    "category": "Triceps",
+    "subCategory": "",
+    "best": "55x10, 55x8, 50x9",
+    "bestDate": "7/30/2025",
+    "notes": ""
+  }
+]
