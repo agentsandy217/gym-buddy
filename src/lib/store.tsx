@@ -14,8 +14,24 @@ import { sheetToExercises } from "./fromSheet";
 import { formatSnapshot, parseSnapshot, todayISO } from "./parse";
 import { isBetter } from "./rank";
 
+export type LoadError = {
+  stage: "read" | "seed" | "prepare";
+  details: string;
+};
+
+function errorDetails(error: unknown): string {
+  if (error && typeof error === "object" && "message" in error && typeof error.message === "string") {
+    const name = "name" in error && typeof error.name === "string" ? error.name : "Error";
+    return `${name}: ${error.message}`;
+  }
+  if (typeof error === "string" && error) return error;
+  return "The browser did not provide additional error details.";
+}
+
 type Store = {
   ready: boolean;
+  loadError: LoadError | null;
+  retryLoad: () => void;
   exercises: Exercise[];
   byId: (id: string) => Exercise | undefined;
   upsert: (exercise: Exercise) => Promise<void>;
@@ -38,26 +54,41 @@ function sortExercises(list: Exercise[]): Exercise[] {
 
 export function StoreProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
+  const [loadError, setLoadError] = useState<LoadError | null>(null);
+  const [loadAttempt, setLoadAttempt] = useState(0);
   const [exercises, setExercises] = useState<Exercise[]>([]);
+
+  const retryLoad = useCallback(() => {
+    setLoadError(null);
+    setReady(false);
+    setLoadAttempt((attempt) => attempt + 1);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const existing = await loadAll();
-      if (cancelled) return;
-      if (existing.length === 0) {
-        const seeded = sheetToExercises(seedRows as SheetRow[]);
-        await saveAll(seeded);
-        if (!cancelled) setExercises(sortExercises(seeded));
-      } else {
-        setExercises(sortExercises(existing));
+      let stage: LoadError["stage"] = "read";
+      try {
+        const existing = await loadAll();
+        if (cancelled) return;
+        let loaded = existing;
+        if (existing.length === 0) {
+          stage = "seed";
+          loaded = sheetToExercises(seedRows as SheetRow[]);
+          await saveAll(loaded);
+        }
+        if (cancelled) return;
+        stage = "prepare";
+        setExercises(sortExercises(loaded));
+        setReady(true);
+      } catch (error) {
+        if (!cancelled) setLoadError({ stage, details: errorDetails(error) });
       }
-      setReady(true);
     })();
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [loadAttempt]);
 
   const byId = useCallback(
     (id: string) => exercises.find((e) => e.id === id),
@@ -110,7 +141,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     [exercises],
   );
 
-  const exportJson = useCallback(() => JSON.stringify(toExportFile(exercises), null, 2), [exercises]);
+  const exportJson = useCallback(() => {
+    if (!ready) throw new Error("Saved lifts must load successfully before exporting a backup.");
+    return JSON.stringify(toExportFile(exercises), null, 2);
+  }, [ready, exercises]);
 
   const importJson = useCallback(async (text: string) => {
     const list = await importBackup(text);
@@ -120,6 +154,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const value = useMemo(
     () => ({
       ready,
+      loadError,
+      retryLoad,
       exercises,
       byId,
       upsert,
@@ -129,7 +165,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       exportJson,
       importJson,
     }),
-    [ready, exercises, byId, upsert, remove, log, setBest, exportJson, importJson],
+    [ready, loadError, retryLoad, exercises, byId, upsert, remove, log, setBest, exportJson, importJson],
   );
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;

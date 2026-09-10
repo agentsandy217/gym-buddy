@@ -6,6 +6,7 @@ import { Editor } from "./ui/Editor";
 import { Lifts } from "./ui/Lifts";
 import { Nav } from "./ui/Nav";
 import { Today } from "./ui/Today";
+import { Startup } from "./ui/Startup";
 import { parseHash, type Route } from "./ui/route";
 
 function useRoute(): Route {
@@ -23,11 +24,7 @@ export default function App() {
   const route = useRoute();
 
   if (!store.ready) {
-    return (
-      <div className="boot">
-        <p>Gym Buddy</p>
-      </div>
-    );
+    return <Startup error={store.loadError} onRetry={store.retryLoad} />;
   }
 
   const showNav = route.name === "today" || route.name === "lifts" || route.name === "backup";

@@ -132,13 +132,15 @@ Seed pipeline: `exercises.csv` → `npm run seed` → `src/seed.json` via `scrip
 
 Backup import validates every exercise, best, and recent snapshot before replacing any stored data (`src/lib/backup.ts`). Invalid records or duplicate exercise IDs reject the entire import with an error; existing data stays intact. A best can be `null` (new lifts or exercises tracked by feel), and mixed/free-text snapshots and empty snapshot dates remain supported.
 
+If startup fails, a recovery screen identifies whether reading the local database, initializing the starting library, or preparing saved lifts failed. **Error details** shows the operation, database/store names, and the browser’s error name and message when available. **Try again** retries loading; a failed read never triggers seeding or clearing data. Backup stays unavailable until loading succeeds, so a read failure cannot produce a misleading empty export.
+
 ### Parse (`src/lib/parse.ts`)
 
 - Split on commas, ignoring commas inside `(parentheses)`.
 - Token: `90x10` / `90 x 10` / `90×10` / `32.5x8` → loaded; `14` → reps; `1:40` → seconds.
 - Display normalizes to `90×10, 90×7, …`.
 
-Tests: `npm test` (parse, rank, seed, target, backup validation, and database import). Import tests use a test-only IndexedDB implementation to verify rejected backups preserve existing records. Keep them green if you touch ranking, parse, or import.
+Tests: `npm test` (parse, rank, seed, target, backup validation, database import/read failures, and startup recovery). Import tests use a test-only IndexedDB implementation to verify rejected backups preserve existing records; startup tests use a test-only DOM to exercise the error screen and retry button. Keep them green if you touch ranking, parse, import, or startup.
 
 ---
 

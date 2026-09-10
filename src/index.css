@@ -73,6 +73,40 @@ textarea {
   color: var(--muted);
 }
 
+.boot > div {
+  text-align: center;
+}
+
+.boot .muted {
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.startup-error {
+  padding-top: 48px;
+}
+
+.startup-error h1 {
+  margin-top: 12px;
+}
+
+.startup-details summary {
+  cursor: pointer;
+  padding: 12px 0;
+  color: var(--accent);
+}
+
+.startup-details pre {
+  margin: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+
 .top h1,
 h1 {
   margin: 2px 0 12px;

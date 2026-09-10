@@ -1,4 +1,4 @@
-import { IDBFactory } from "fake-indexeddb";
+import { IDBDatabase, IDBFactory, IDBObjectStore } from "fake-indexeddb";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { Exercise } from "../types";
 import { importBackup, loadAll, saveAll, toExportFile } from "./db";
@@ -59,6 +59,46 @@ describe("importBackup", () => {
     const exported = JSON.stringify(toExportFile(await loadAll()));
     await saveAll([band]);
     await importBackup(exported);
+    expect(await loadAll()).toEqual([existing]);
+  });
+});
+
+describe("database read failures", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+    vi.unstubAllGlobals();
+  });
+
+  it("propagates errors opening the database", async () => {
+    vi.stubGlobal("indexedDB", {
+      open: () => { throw new DOMException("Access denied", "SecurityError"); },
+    });
+    await expect(loadAll()).rejects.toMatchObject({ name: "SecurityError", message: "Access denied" });
+  });
+
+  it("rejects an aborted read instead of leaving startup waiting indefinitely", async () => {
+    vi.stubGlobal("indexedDB", new IDBFactory());
+    await saveAll([existing]);
+    const transaction = IDBDatabase.prototype.transaction;
+    vi.spyOn(IDBDatabase.prototype, "transaction").mockImplementationOnce(function (this: IDBDatabase, ...args) {
+      const tx = transaction.apply(this, args);
+      queueMicrotask(() => tx.abort());
+      return tx;
+    });
+    await expect(loadAll()).rejects.toBeTruthy();
+    expect(await loadAll()).toEqual([existing]);
+  });
+
+  it("reports a transaction aborted after the read request succeeds", async () => {
+    vi.stubGlobal("indexedDB", new IDBFactory());
+    await saveAll([existing]);
+    const getAll = IDBObjectStore.prototype.getAll;
+    vi.spyOn(IDBObjectStore.prototype, "getAll").mockImplementationOnce(function (this: IDBObjectStore, ...args) {
+      const request = getAll.apply(this, args);
+      request.addEventListener("success", () => this.transaction.abort());
+      return request;
+    });
+    await expect(loadAll()).rejects.toThrow("Reading the local database was interrupted (transaction aborted).");
     expect(await loadAll()).toEqual([existing]);
   });
 });

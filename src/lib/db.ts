@@ -29,12 +29,18 @@ function txDone(tx: IDBTransaction): Promise<void> {
 
 export async function loadAll(): Promise<Exercise[]> {
   const db = await openDb();
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction(STORE, "readonly");
-    const req = tx.objectStore(STORE).getAll();
-    req.onsuccess = () => resolve(req.result as Exercise[]);
-    req.onerror = () => reject(req.error);
-  });
+  try {
+    return await new Promise<Exercise[]>((resolve, reject) => {
+      const tx = db.transaction(STORE, "readonly");
+      const req = tx.objectStore(STORE).getAll();
+      tx.oncomplete = () => resolve(req.result as Exercise[]);
+      tx.onerror = () => reject(tx.error ?? req.error ?? new Error("Reading the local database failed."));
+      tx.onabort = () => reject(tx.error ?? new Error("Reading the local database was interrupted (transaction aborted)."));
+      req.onerror = () => reject(req.error);
+    });
+  } finally {
+    db.close();
+  }
 }
 
 export async function saveAll(exercises: Exercise[]): Promise<void> {
