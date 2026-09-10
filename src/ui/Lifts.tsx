@@ -4,10 +4,13 @@ import { MUSCLES } from "../types";
 import { LiftCard } from "./Card";
 import { MUSCLE_LABEL } from "./labels";
 import { go } from "./route";
+import type { WorkoutList } from "../lib/workout";
+import { WorkoutNotice } from "./WorkoutNotice";
 
-export function Lifts({ exercises }: { exercises: Exercise[] }) {
+export function Lifts({ exercises, workout }: { exercises: Exercise[]; workout: WorkoutList }) {
   const [q, setQ] = useState("");
   const [muscle, setMuscle] = useState<Muscle | "all">("all");
+  const [announcement, setAnnouncement] = useState("");
 
   const visible = useMemo(() => {
     const query = q.trim().toLowerCase();
@@ -29,6 +32,8 @@ export function Lifts({ exercises }: { exercises: Exercise[] }) {
           Add
         </button>
       </header>
+      <WorkoutNotice workout={workout} />
+      <p className="sr-only" role="status">{announcement}</p>
       <input
         className="search"
         type="search"
@@ -60,7 +65,19 @@ export function Lifts({ exercises }: { exercises: Exercise[] }) {
       </div>
       <div className="log-list inset">
         {visible.map((ex) => (
-          <LiftCard key={ex.id} exercise={ex} />
+          <LiftCard key={ex.id} exercise={ex} action={
+            <button
+              type="button"
+              className={workout.ids.includes(ex.id) ? "queue-add queued" : "queue-add"}
+              disabled={!workout.ready || workout.ids.includes(ex.id)}
+              aria-label={workout.ids.includes(ex.id) ? `${ex.name} is in your workout` : `Add ${ex.name} to workout`}
+              onClick={() => {
+                if (workout.add(ex.id)) setAnnouncement(`${ex.name} added to Workout.`);
+              }}
+            >
+              <span aria-hidden="true">{workout.ids.includes(ex.id) ? "✓" : "+"}</span>
+            </button>
+          } />
         ))}
         {visible.length === 0 && <p className="empty">No lifts match.</p>}
       </div>

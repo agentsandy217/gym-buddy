@@ -13,6 +13,7 @@ import { deleteOne, importBackup, loadAll, saveAll, saveOne, toExportFile } from
 import { sheetToExercises } from "./fromSheet";
 import { formatSnapshot, parseSnapshot, todayISO } from "./parse";
 import { isBetter } from "./rank";
+import { useWorkout, type WorkoutList } from "./workout";
 
 export type LoadError = {
   stage: "read" | "seed" | "prepare";
@@ -33,6 +34,7 @@ type Store = {
   loadError: LoadError | null;
   retryLoad: () => void;
   exercises: Exercise[];
+  workout: WorkoutList;
   byId: (id: string) => Exercise | undefined;
   upsert: (exercise: Exercise) => Promise<void>;
   remove: (id: string) => Promise<void>;
@@ -57,6 +59,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [loadError, setLoadError] = useState<LoadError | null>(null);
   const [loadAttempt, setLoadAttempt] = useState(0);
   const [exercises, setExercises] = useState<Exercise[]>([]);
+  const workout = useWorkout(exercises, ready);
 
   const retryLoad = useCallback(() => {
     setLoadError(null);
@@ -157,6 +160,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       loadError,
       retryLoad,
       exercises,
+      workout,
       byId,
       upsert,
       remove,
@@ -165,7 +169,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       exportJson,
       importJson,
     }),
-    [ready, loadError, retryLoad, exercises, byId, upsert, remove, log, setBest, exportJson, importJson],
+    [ready, loadError, retryLoad, exercises, workout, byId, upsert, remove, log, setBest, exportJson, importJson],
   );
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;

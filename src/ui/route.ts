@@ -1,5 +1,6 @@
 export type Route =
   | { name: "lifts" }
+  | { name: "workout" }
   | { name: "backup" }
   | { name: "new" }
   | { name: "detail"; id: string }
@@ -11,6 +12,7 @@ export function parseHash(hash: string): Route {
   // Root and old Today bookmarks now open the muscle-filtered library.
   if (parts.length === 0 || parts[0] === "today") return { name: "lifts" };
   if (parts[0] === "lifts") return { name: "lifts" };
+  if (parts[0] === "workout") return { name: "workout" };
   if (parts[0] === "backup") return { name: "backup" };
   if (parts[0] === "new") return { name: "new" };
   if (parts[0] === "e" && parts[1] && parts[2] === "edit") return { name: "edit", id: parts[1] };

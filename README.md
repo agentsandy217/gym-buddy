@@ -73,6 +73,12 @@ Sheet `Category` / `SubCategory` (e.g. `Fly, General`) was garbage. We inferred 
 
 Exercise notes (form cues from the sheet) show on the **detail** screen when present, labeled **Notes**, under the name. They do not appear if empty. Edit is only for changing them.
 
+### Current workout
+
+**Workout** holds one current list of exercises. Tap **+** beside a lift to append it; a checkmark means it is already queued. Tapping the rest of the row opens its normal detail screen. Workout shows the selected lifts in queue order with their current bests, dates, and targets. Use the arrows to reorder, **Remove** for one entry, or **Clear list** to start fresh. Clearing the queue does not delete lifts, notes, or logs.
+
+The list persists across closing/reopening the app and across days until manually cleared. No midnight reset, saved routines, workout names, or workout history. There is no limit of five to seven exercises; that is the owner's usual selection size.
+
 ### Platform: home-screen web app, $0, on-device data
 
 Not a native iOS app. No Xcode, no App Store, no $99/year Apple account. The owner has no iOS/app-dev experience.
@@ -106,12 +112,13 @@ Hash routing so GitHub Pages needs no rewrite rules.
 | Route | Screen | Job |
 |---|---|---|
 | `#/` or `#/lifts` | Lifts | Default screen: full library, search, muscle filter, best + date + green target, **Add** |
+| `#/workout` | Workout | Current exercise queue, reorder/remove, **Clear list**, open lifts to log |
 | `#/e/:id` | Detail | Notes, top set, target, best + date, log shorthand, recents / set-as-best |
 | `#/e/:id/edit` | Editor | Name, muscle, equipment, day tags, notes, delete |
 | `#/new` | Editor | Create |
 | `#/backup` | Backup | Export JSON (share sheet / download); import replaces all |
 
-Bottom nav: **Lifts / Backup**. Old `#/today` links also open Lifts. A third tab for queuing exercises for today’s workout is planned as a separate future change; no queue is implemented yet.
+Bottom nav: **Lifts / Workout / Backup**. Old `#/today` links still open Lifts.
 
 ### Data model (`src/types.ts`)
 
@@ -133,21 +140,23 @@ Backup import validates every exercise, best, and recent snapshot before replaci
 
 If startup fails, a recovery screen identifies whether reading the local database, initializing the starting library, or preparing saved lifts failed. **Error details** shows the operation, database/store names, and the browser’s error name and message when available. **Try again** retries loading; a failed read never triggers seeding or clearing data. Backup stays unavailable until loading succeeds, so a read failure cannot produce a misleading empty export.
 
+The current workout is an ordered list of exercise IDs stored separately in localStorage (`gym-buddy-workout`, `src/lib/workout.ts`). It references the library so updated bests and names appear immediately. Deleted or missing lifts are removed from the queue, including after a backup import. The temporary workout list is not included in the exercise backup JSON. A failed queue save leaves the previous selection intact; a failed queue load shows details and a retry button without blocking access to lift records or backups.
+
 ### Parse (`src/lib/parse.ts`)
 
 - Split on commas, ignoring commas inside `(parentheses)`.
 - Token: `90x10` / `90 x 10` / `90×10` / `32.5x8` → loaded; `14` → reps; `1:40` → seconds.
 - Display normalizes to `90×10, 90×7, …`.
 
-Tests: `npm test` (parse, rank, seed, target, backup validation, database import/read failures, and startup recovery). Import tests use a test-only IndexedDB implementation to verify rejected backups preserve existing records; startup tests use a test-only DOM to exercise the error screen and retry button. Keep them green if you touch ranking, parse, import, or startup.
+Tests: `npm test` (parse, rank, seed, target, backup validation, database import/read failures, startup recovery, navigation, and workout persistence/controls). Import tests use a test-only IndexedDB implementation to verify rejected backups preserve existing records; UI tests use a test-only DOM. Keep them green if you touch ranking, parse, import, startup, or the workout queue.
 
 ---
 
 ## Repo layout
 
 ```
-src/lib/parse.ts rank.ts target.ts db.ts store.tsx fromSheet.ts
-src/ui/          Lifts, Detail, Editor, Backup, Startup, Nav, Card (logbook row)
+src/lib/parse.ts rank.ts target.ts db.ts store.tsx fromSheet.ts workout.ts
+src/ui/          Lifts, Workout, Detail, Editor, Backup, Startup, Nav, Card (logbook row)
 src/seed.json    Bundled first-run library
 exercises.csv    Original sheet export (videos still in the CSV; seed strips them)
 .github/workflows/pages.yml   Deploy dist/ to GitHub Pages on push to main
@@ -188,7 +197,6 @@ Native iOS/Android, paid hosting, user accounts, cloud sync of live logs, Cloudf
 
 ## Sensible next work (only if the owner wants it)
 
-- Add a third tab to queue exercises for today’s workout, as a separate step after removing Today.
 - Real gym use → logging UX, tag mistakes, target wording.
 - Cloudflare Access if they want the HTML gated to their email.
 - Richer parse (`90 for 10 then 7`).

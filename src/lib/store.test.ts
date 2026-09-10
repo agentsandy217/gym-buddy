@@ -41,6 +41,7 @@ async function retry() {
 }
 
 beforeEach(() => {
+  localStorage.clear();
   vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
   vi.mocked(loadAll).mockReset();
   vi.mocked(saveAll).mockReset().mockResolvedValue(undefined);
@@ -149,13 +150,13 @@ describe("startup recovery", () => {
 });
 
 describe("library navigation", () => {
-  it.each(["", "#/", "#/today", "#/lifts"])("opens Lifts from %j with two tabs", async (hash) => {
+  it.each(["", "#/", "#/today", "#/lifts"])("opens Lifts from %j with three tabs", async (hash) => {
     window.history.replaceState(null, "", `/${hash}`);
     vi.mocked(loadAll).mockResolvedValue([exercise]);
     await render();
     expect(container.querySelector("h1")?.textContent).toBe("Lifts");
     expect(container.querySelector('input[type="search"]')?.getAttribute("placeholder")).toBe("Search lifts");
-    expect([...container.querySelectorAll("nav button")].map((button) => button.textContent)).toEqual(["Lifts", "Backup"]);
+    expect([...container.querySelectorAll("nav button")].map((button) => button.textContent)).toEqual(["Lifts", "Workout", "Backup"]);
     expect(container.querySelector("nav .on")?.textContent).toBe("Lifts");
     expect(container.querySelector(".lift-name")?.textContent).toBe(exercise.name);
     expect(saveAll).not.toHaveBeenCalled();
