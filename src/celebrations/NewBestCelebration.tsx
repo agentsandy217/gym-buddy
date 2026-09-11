@@ -13,7 +13,7 @@ export type CelebrationProps = {
 
 /** Presentation only: no store access, record mutation, or audio. Mount once per event. */
 export function NewBestCelebration({ exercise, record, previous, durationMs = 2800,
-  intensity = "hype", reduceMotion = false, onDismiss }: CelebrationProps) {
+  intensity = "nuclear", reduceMotion = false, onDismiss }: CelebrationProps) {
   const [systemReduced, setSystemReduced] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   const [mediaFailed, setMediaFailed] = useState(false);
   const video = useRef<HTMLVideoElement>(null);
@@ -42,7 +42,7 @@ export function NewBestCelebration({ exercise, record, previous, durationMs = 28
     <button ref={close} className="celebration-dismiss" onClick={onDismiss} aria-label="Dismiss new best celebration">
       <span className="celebration-shockwave" aria-hidden="true" />
       {!still && <div className="celebration-sparks" aria-hidden="true">{Array.from({length: intensity === "nuclear" ? 36 : 20}, (_, i) =>
-        <i key={i} style={{ "--angle": `${i * 137.5}deg`, "--travel": `${130 + (i % 7) * 33}px`, "--delay": `${(i % 4) * 35}ms`, "--color": ["#b6ff63", "#ffd466", "#ff7048", "#fff"][i % 4] } as CSSProperties} />)}</div>}
+        <i key={i} style={{ "--angle": `${i * 137.5}deg`, "--travel": `${130 + (i % 7) * 33}px`, "--delay": `${(i % 4) * 35}ms`, "--color": ["var(--good)", "var(--accent)", "#93b8ff", "var(--ink)"][i % 4] } as CSSProperties} />)}</div>}
       <div className="celebration-card">
         <div className="celebration-eyebrow">ALL-TIME BEST <span>✦</span> NEW TARGET SET</div>
         <div className="celebration-media">

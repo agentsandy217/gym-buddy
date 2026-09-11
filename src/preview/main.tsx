@@ -12,13 +12,13 @@ const examples = [
 function Playground() {
   const [active, setActive] = useState(false);
   const [duration, setDuration] = useState(2800);
-  const [intensity, setIntensity] = useState<"hype" | "nuclear">("hype");
+  const [intensity, setIntensity] = useState<"hype" | "nuclear">("nuclear");
   const [reduced, setReduced] = useState(false);
   const [example, setExample] = useState(0);
   const dismiss = useCallback(() => setActive(false), []);
   const data = examples[example];
   return <main className="lab">
-    <header className="lab-header"><a className="lab-brand" href="./preview.html">GYM BUDDY<span>CELEBRATION LAB</span></a><span className="lab-version">PREVIEW 01</span></header>
+    <header className="lab-header"><a className="lab-brand" href="./preview.html">GYM BUDDY<span>CELEBRATION LAB</span></a><span className="lab-version">PREVIEW 02</span></header>
     <section className="lab-intro"><div className="lab-kicker">SMALL PROGRESS. EXCESSIVE RESPONSE.</div><h1>You earned<br/>a little <em>chaos.</em></h1><p>A silent salute to a new all-time best.<br/>Ronnie takes it from here.</p></section>
     <section className="lab-stage" aria-label="Celebration preview">
       <div className="lab-stage-top"><span>THE MOMENT</span><span className="lab-silent">◉ SILENT BY DESIGN</span></div>

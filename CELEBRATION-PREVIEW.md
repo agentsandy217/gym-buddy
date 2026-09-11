@@ -31,3 +31,7 @@ Media source: https://media.tenor.com/518P-3YD5ugAAAPo/light-weight.mp4
 - Actual iPhone/Safari playback and visual preference await Josh's preview review.
 
 No merge/deploy without Josh's explicit approval. Future ideas: protein-tub rocket launch, muscular-gorilla coronation, randomized rotation avoiding immediate repeats.
+
+## Review iteration 02
+
+Josh selected Nuclear, 2.8 seconds, motion enabled, always silent. These are now the defaults (OS reduced-motion still respected). Replaced the initial lime/olive styling with the existing app CSS tokens: navy/charcoal surfaces, blue accent/header/button, mint-green best values, and original text/border colors. Animation timing and behavior are unchanged. Preview 02 built and silent playback verified through the external URL with no browser errors. Still no production integration or merge authorization.
