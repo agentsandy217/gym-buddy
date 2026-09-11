@@ -14,12 +14,13 @@ export type CelebrationProps = {
 /** Presentation only: no store access, record mutation, or audio. Mount once per event. */
 export function NewBestCelebration({ exercise, record, previous, durationMs = 2800,
   intensity = "nuclear", reduceMotion = false, onDismiss }: CelebrationProps) {
-  const [systemReduced, setSystemReduced] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const [systemReduced, setSystemReduced] = useState(() => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false);
   const [mediaFailed, setMediaFailed] = useState(false);
   const video = useRef<HTMLVideoElement>(null);
   const close = useRef<HTMLButtonElement>(null);
   const still = reduceMotion || systemReduced;
   useEffect(() => {
+    if (!window.matchMedia) return;
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => setSystemReduced(query.matches);
     query.addEventListener("change", update);
@@ -51,7 +52,7 @@ export function NewBestCelebration({ exercise, record, previous, durationMs = 28
           <div className="celebration-media-shade" />
           <div className="celebration-headline">LIGHT WEIGHT<span>BABY!</span></div>
         </div>
-        <div className="celebration-result"><div className="celebration-exercise">{exercise}</div><div className="celebration-record">{record}</div><div className="celebration-previous"><span>{previous}</span> <b>OBLITERATED.</b></div></div>
+        <div className="celebration-result"><div className="celebration-exercise">{exercise}</div><div className="celebration-record">{record}</div><div className="celebration-previous">{previous ? <><span>{previous}</span> <b>OBLITERATED.</b></> : <b>FIRST BEST. LET’S GO.</b>}</div></div>
         <div className="celebration-footer">TAP ANYWHERE TO GET BACK TO IT <span>↗</span></div>
       </div>
     </button>

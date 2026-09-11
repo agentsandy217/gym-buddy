@@ -53,6 +53,12 @@ Backoff sets are shown so the day is visible. They do not pick the winner.
 
 Kinds that auto-rank: **loaded** (weight×reps), **bodyweight** (reps only), **timed** (longer wins). Mixed/unparseable lines (circuits like `23, 16, 1:10`, band notes, leftover prose) **do not** auto-replace the best. The owner can **Set as best** on a recent log. One known quirk: timed *for time* (faster is better, e.g. “30 Pull Ups (Timed)”) is scored as longer-is-better; don’t “fix” that unless asked.
 
+### New-best celebration
+
+After a successful log establishes a new best, a silent Ronnie Coleman celebration plays for 2.8 seconds with the app-themed Nuclear animation. Tap anywhere or press Escape to dismiss. Reduced-motion device settings show a still image without particles, zoom, or shake. Ties, worse logs, failed saves, page reloads, and manual Set as best do not trigger it. First logs that establish a best celebrate without showing a previous record. No ranking or persistence changes.
+
+The separate replay playground is built with `npm run build:celebration`; see `CELEBRATION-PREVIEW.md`. It is not part of the normal Pages entry.
+
 ### Target copy
 
 Derived only from the first set of the current best (`src/lib/target.ts`):

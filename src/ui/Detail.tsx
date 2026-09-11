@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import type { Exercise } from "../types";
-import { formatDisplayDate, formatSnapshot, todayISO } from "../lib/parse";
+import { formatDisplayDate, formatSnapshot, parseSnapshot, todayISO } from "../lib/parse";
 import { targetLine, targetShort, topSetLabel } from "../lib/target";
 import { EQUIPMENT_LABEL, MUSCLE_LABEL } from "./labels";
 import { go } from "./route";
+import { NewBestCelebration } from "../celebrations/NewBestCelebration";
 
 type Props = {
   exercise: Exercise;
@@ -18,12 +19,21 @@ export function Detail({ exercise, onLog, onSetBest }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
+  const [celebration, setCelebration] = useState<{ record: string; previous: string } | null>(null);
+  const dismissCelebration = useCallback(() => setCelebration(null), []);
+
   async function save() {
     setBusy(true);
     setError(null);
     setStatus(null);
+    setCelebration(null);
+    const submitted = parseSnapshot(raw, date);
+    const previous = exercise.best ? topSetLabel(exercise.best) : "";
     try {
       const result = await onLog(raw, date);
+      if (result.newBest && submitted) {
+        setCelebration({ record: topSetLabel(submitted), previous });
+      }
       setStatus(result.newBest ? "New best. That’s the target now." : "Logged. Best is unchanged.");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Could not save");
@@ -34,6 +44,7 @@ export function Detail({ exercise, onLog, onSetBest }: Props) {
 
   return (
     <div className="page">
+      {celebration && <NewBestCelebration exercise={exercise.name} {...celebration} durationMs={2800} intensity="nuclear" onDismiss={dismissCelebration} />} 
       <header className="top row">
         <button type="button" className="text-btn" onClick={() => history.back()}>
           Back

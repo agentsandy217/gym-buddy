@@ -1,6 +1,6 @@
 # Silent celebration playground
 
-Preview only. No production trigger is wired, no main-app entry points or ranking/data code are changed. Josh reviews the visual on his phone before any integration or live deployment. Audio is intentionally absent, not a future toggle.
+Josh approved the preview and explicitly authorized integration and deployment on 2026-09-11. The standalone playground stays isolated; the production Detail screen now mounts the same presentation component only after a successful new-best log. Ranking/data code is unchanged. Audio is intentionally absent, not a future toggle.
 
 ## Run
 
@@ -35,3 +35,7 @@ No merge/deploy without Josh's explicit approval. Future ideas: protein-tub rock
 ## Review iteration 02
 
 Josh selected Nuclear, 2.8 seconds, motion enabled, always silent. These are now the defaults (OS reduced-motion still respected). Replaced the initial lime/olive styling with the existing app CSS tokens: navy/charcoal surfaces, blue accent/header/button, mint-green best values, and original text/border colors. Animation timing and behavior are unchanged. Preview 02 built and silent playback verified through the external URL with no browser errors. Still no production integration or merge authorization.
+
+## Approved production integration
+
+Josh approved Preview 02 and said to push it. Detail uses the resolved save result, captures the submitted and previous top-set labels, and keeps celebration state ephemeral. Manual Set as best remains unchanged. First best uses appropriate copy. All 114 tests pass (four new store/UI integration cases), and GitHub Pages base-path build passes.
